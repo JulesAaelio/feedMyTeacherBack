@@ -1,4 +1,5 @@
 <?php
+namespace ReviewBundle\Entity;
 
 class Review
 {
@@ -18,9 +19,48 @@ class Review
 
     public function __toString()
     {
-        return "--REVIEW--\n"
-        .'Note attribuée au prof :' . $this->teacherRate."\n"
-        .'Note attribuéé au cours :' . $this->classRate."\n"
-        .'Rédigé par :'.$this->sender."\n";
+            return 'Avis de '.$this->sender;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTeacherRate()
+    {
+        return $this->teacherRate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTeacherReview()
+    {
+        return $this->teacherReview;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClassRate()
+    {
+        return $this->classRate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClassReview()
+    {
+        return $this->classReview;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSender()
+    {
+        return $this->sender;
+    }
+
+
 }

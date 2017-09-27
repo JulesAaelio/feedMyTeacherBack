@@ -8,17 +8,23 @@
 
 namespace ReviewBundle\Controller;
 
+use ReviewBundle\Repository\ReviewRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class DetailController extends Controller
 {
     /**
-     * @Route("/detail", name="review_detail")
+     * @Route("/detail/{controllerIndex}", name="review_detail")
      */
-    public function detailAction()
+    public function detailAction($controllerIndex = 0)
     {
-        return $this->render('ReviewBundle:Detail:detail.html.twig');
+        $reviewRepository = new ReviewRepository();
+        $reviews = $reviewRepository->getAllReviews();
+        $review = $reviews[$controllerIndex];
+        return $this->render('ReviewBundle:Detail:detail.html.twig',[
+            'review' => $review,
+        ]);
     }
 }
 
