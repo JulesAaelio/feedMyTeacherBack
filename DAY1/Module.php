@@ -8,5 +8,17 @@
 
 class Module
 {
+    public function __construct($subject,$teacher)
+    {
+        $this->subject = $subject;
+        $this->teacher = $teacher;
+    }
 
+    public function __toString()
+    {
+        return $this->subject.' '.$this->teacher;
+    }
+
+    private $subject;
+    private $teacher;
 }
