@@ -8,7 +8,11 @@
     <ul class="review-list">
         {% for review in reviews %}
             <li class="review">
-                <a href="{{ url('review_detail', {'controllerIndex': loop.index0 })}}">{{ review }}</a>
+                <a href="{{ url('review_detail', {'controllerIndex': loop.index0 })}}">
+                    <div> {{ review }} </div>
+                    <div class="icon">{{ review.classStars }}</div>
+                    <div class="icon"> {{ review.teacherStars }} </div>
+                </a>
             </li>
         {% else %}
             <li>No feedback yet ! Be the first to feedback ! (Nah you can't because students did'nt worked enough !)</li>

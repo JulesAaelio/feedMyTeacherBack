@@ -23,14 +23,20 @@ h1
     text-align: center;
 }
 
-li.review
+.review
 {
     box-shadow: orange 2px 2px;
     padding: 20px 20px;
     list-style: none;
     margin-bottom: 5px;
 }
-ul.review-list
+.review  div
+{
+    min-width: 400px;
+    display: inline-block;
+}
+
+.review-list
 {
     margin: 0;
     padding: 0;

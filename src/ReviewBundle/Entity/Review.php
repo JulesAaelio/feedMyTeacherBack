@@ -19,7 +19,7 @@ class Review
 
     public function __toString()
     {
-            return 'Avis de '.$this->sender.' '.$this->classRate.' '.$this->teacherRate;
+            return 'Avis de '.$this->sender;
     }
 
     /**
@@ -54,12 +54,38 @@ class Review
         return $this->classReview;
     }
 
+    public function getClassStars()
+    {
+        return $this->rateToStars($this->classRate);
+    }
+
+    public function getTeacherStars()
+    {
+        return $this->rateToStars($this->teacherRate);
+    }
+
     /**
      * @return mixed
      */
     public function getSender()
     {
         return $this->sender;
+    }
+
+    private function rateToStars($rate)
+    {
+        $stars = '';
+        for($i = 0;$i < 5;$i++)
+        {
+            if($i < $rate)
+            {
+                $stars.= 'H';
+            }else
+            {
+                $stars.='G';
+            }
+        }
+        return $stars;
     }
 
 

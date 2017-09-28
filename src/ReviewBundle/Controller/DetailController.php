@@ -21,7 +21,7 @@ class DetailController extends Controller
     {
         $reviewRepository = new ReviewRepository();
         $reviews = $reviewRepository->getAllReviews();
-        if(count($reviews) <= 0)
+        if(!isset($reviews[$controllerIndex]))
         {
             throw $this->createNotFoundException('');
         }

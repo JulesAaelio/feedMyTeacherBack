@@ -8,13 +8,7 @@
     <div>
         <span class="label">Note attribuée au professeur : </span>
         <span class="icon">
-            {% for i in 1..5 %}
-                {% if(loop.index <= review.teacherRate) %}
-                    H
-                {% else %}
-                    G
-                {% endif %}
-            {% endfor %}
+            {{ review.teacherStars }}
         </span>
     </div>
     <div>
@@ -24,13 +18,7 @@
     <div>
         <span class="label">Note attribuée au contenu du cours  :  </span>
         <span class="icon">
-            {% for i in 1..5 %}
-                {% if(loop.index <= review.classRate) %}
-                    H
-                {% else %}
-                    G
-                {% endif %}
-            {% endfor %}
+            {{ review.classStars }}
         </span>
     </div>
     <div>

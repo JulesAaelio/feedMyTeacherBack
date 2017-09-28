@@ -42,15 +42,11 @@ class ListController extends Controller
                 $b = $b->getTeacherRate();
             }
 
-            if ($a == $b )
-            {
-                return 0;
-            }
-            $result = ($a > $b) ? -1 : 1;
-            if($order == 'ASC')
-            {
-                $result *= -1;
-            }
+            return $order == 'ASC' ?
+                $a <=> $b :
+                $b <=> $a
+                ;
+
             return $result;
         };
     }
