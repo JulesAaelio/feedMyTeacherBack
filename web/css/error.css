@@ -1,0 +1,15 @@
+h2
+{
+    text-align: center;
+}
+.images
+{
+    display: flex;
+    justify-content: space-around;
+}
+
+.images-closer
+{
+    display: flex;
+    justify-content: center;
+}

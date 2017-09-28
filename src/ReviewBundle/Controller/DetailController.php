@@ -21,6 +21,10 @@ class DetailController extends Controller
     {
         $reviewRepository = new ReviewRepository();
         $reviews = $reviewRepository->getAllReviews();
+        if(count($reviews) <= 0)
+        {
+            throw $this->createNotFoundException('');
+        }
         $review = $reviews[$controllerIndex];
         return $this->render('ReviewBundle:Detail:detail.html.twig',[
             'review' => $review,

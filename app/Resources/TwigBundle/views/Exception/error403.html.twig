@@ -1,0 +1,8 @@
+{% extends 'TwigBundle:Exception:error.html.twig' %}
+{% block customMessage %} Stop right there ! You're not allowed in this area. {% endblock %}
+{% block images %}
+    <div class="images-closer">
+        <img src="{{ asset('images/alex_stop_mirror.png') }}"/>
+        <img src="{{ asset('images/jules_stop.png') }}"/>
+    </div>
+{% endblock %}

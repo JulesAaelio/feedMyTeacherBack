@@ -19,7 +19,7 @@ class Review
 
     public function __toString()
     {
-            return 'Avis de '.$this->sender;
+            return 'Avis de '.$this->sender.' '.$this->classRate.' '.$this->teacherRate;
     }
 
     /**
