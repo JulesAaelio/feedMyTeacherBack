@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{%  block title %}  {{ status_text }} : An Error Occurred {% endblock %}
+{%  block stylesheets  %}
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/error.css') }}"/>
+{% endblock %}
+{% block body %}
+    <h1> {% block customMessage %}{% endblock %}</h1>
+    <h2> The server returned a "{{ status_code }} {{ status_text }}".</h2>
+    <div class="images">
+    {% block images %}
+    {% endblock %}
+    </div>
+{% endblock %}

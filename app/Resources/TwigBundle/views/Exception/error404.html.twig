@@ -1,0 +1,6 @@
+{% extends 'TwigBundle:Exception:error.html.twig' %}
+{% block customMessage %} Huh, hoh. Obviously, someone has stolen this page. {% endblock %}
+{% block images %}
+    <img src="{{ asset('images/alex_hood.png') }}"/>
+    <img src="{{ asset('images/jules_hood.png') }}"/>
+{% endblock %}

@@ -1,0 +1,49 @@
+@font-face {
+    font-family: glyphicons;
+    src: url(/fonts/aaelio_glyphicons.ttf);
+}
+
+body,ul,li
+{
+    font-family: Questrial,sans-serif;
+}
+.icon
+{
+    font-family: "glyphicons",sans-serif;
+}
+
+a
+{
+    color: black;
+    text-decoration: none;
+}
+
+h1
+{
+    text-align: center;
+}
+
+.review
+{
+    box-shadow: orange 2px 2px;
+    padding: 20px 20px;
+    list-style: none;
+    margin-bottom: 5px;
+}
+.review  div
+{
+    min-width: 400px;
+    display: inline-block;
+}
+
+.review-list
+{
+    margin: 0;
+    padding: 0;
+}
+
+.label
+{
+    font-weight: bold;
+}
+
