@@ -1,29 +1,83 @@
 <?php
+
 namespace ReviewBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Review
+ *
+ * @ORM\Table(name="review")
+ * @ORM\Entity(repositoryClass="ReviewBundle\Repository\ReviewRepository")
+ */
 class Review
 {
-	private $teacherRate;
-	private $teacherReview;
-	private $classRate;
-	private $classReview;
-	private $sender;
-	public function __construct($teacherRate,$teacherReview,$classRate,$classReview,$sender)
-    {
-        $this->teacherRate = $teacherRate;
-        $this->teacherReview = $teacherReview;
-        $this->classRate = $classRate;
-        $this->classReview = $classReview;
-        $this->sender = $sender;
-    }
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
 
-    public function __toString()
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="teacherRate", type="integer")
+     */
+    private $teacherRate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="teacherReview", type="string", length=255)
+     */
+    private $teacherReview;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="classRate", type="integer")
+     */
+    private $classRate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="classReview", type="string", length=255)
+     */
+    private $classReview;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
     {
-            return 'Avis de '.$this->sender;
+        return $this->id;
     }
 
     /**
-     * @return mixed
+     * Set teacherRate
+     *
+     * @param integer $teacherRate
+     *
+     * @return Review
+     */
+    public function setTeacherRate($teacherRate)
+    {
+        $this->teacherRate = $teacherRate;
+
+        return $this;
+    }
+
+    /**
+     * Get teacherRate
+     *
+     * @return int
      */
     public function getTeacherRate()
     {
@@ -31,7 +85,23 @@ class Review
     }
 
     /**
-     * @return mixed
+     * Set teacherReview
+     *
+     * @param string $teacherReview
+     *
+     * @return Review
+     */
+    public function setTeacherReview($teacherReview)
+    {
+        $this->teacherReview = $teacherReview;
+
+        return $this;
+    }
+
+    /**
+     * Get teacherReview
+     *
+     * @return string
      */
     public function getTeacherReview()
     {
@@ -39,7 +109,23 @@ class Review
     }
 
     /**
-     * @return mixed
+     * Set classRate
+     *
+     * @param integer $classRate
+     *
+     * @return Review
+     */
+    public function setClassRate($classRate)
+    {
+        $this->classRate = $classRate;
+
+        return $this;
+    }
+
+    /**
+     * Get classRate
+     *
+     * @return int
      */
     public function getClassRate()
     {
@@ -47,11 +133,35 @@ class Review
     }
 
     /**
-     * @return mixed
+     * Set classReview
+     *
+     * @param string $classReview
+     *
+     * @return Review
+     */
+    public function setClassReview($classReview)
+    {
+        $this->classReview = $classReview;
+
+        return $this;
+    }
+
+    /**
+     * Get classReview
+     *
+     * @return string
      */
     public function getClassReview()
     {
         return $this->classReview;
+    }
+
+    public function __construct(int $teacherRate,string $teacherReview,int $classRate,string $classReview)
+    {
+        $this->teacherRate = $teacherRate;
+        $this->teacherReview = $teacherReview;
+        $this->classRate = $classRate;
+        $this->classReview = $classReview;
     }
 
     public function getClassStars()
@@ -62,14 +172,6 @@ class Review
     public function getTeacherStars()
     {
         return $this->rateToStars($this->teacherRate);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSender()
-    {
-        return $this->sender;
     }
 
     private function rateToStars($rate)
@@ -87,6 +189,5 @@ class Review
         }
         return $stars;
     }
-
-
 }
+
