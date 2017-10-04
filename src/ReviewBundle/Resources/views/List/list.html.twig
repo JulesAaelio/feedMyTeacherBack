@@ -8,7 +8,7 @@
     <ul class="review-list">
         {% for review in reviews %}
             <li class="review">
-                <a href="{{ url('review_detail', {'controllerIndex': loop.index0 })}}">
+                <a href="{{ url('review_detail', {'controllerIndex': review.id })}}">
                     <div> {{ review }} </div>
                     <div class="icon">{{ review.classStars }}</div>
                     <div class="icon"> {{ review.teacherStars }} </div>

@@ -51,6 +51,19 @@ class Review
 
 
     /**
+     * @ORM\ManyToOne(targetEntity="Module", inversedBy="reviews")
+     * @ORM\JoinColumn(name="module_id", referencedColumnName="id")
+     */
+    private $module;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Student", inversedBy="reviews")
+     * @ORM\JoinColumn(name="student_id", referencedColumnName="id")
+     */
+    private $sender;
+
+    /**
      * Get id
      *
      * @return int
@@ -156,12 +169,14 @@ class Review
         return $this->classReview;
     }
 
-    public function __construct(int $teacherRate,string $teacherReview,int $classRate,string $classReview)
+    public function __construct(int $teacherRate,string $teacherReview,int $classRate,string $classReview,$module,$sender)
     {
         $this->teacherRate = $teacherRate;
         $this->teacherReview = $teacherReview;
         $this->classRate = $classRate;
         $this->classReview = $classReview;
+        $this->module = $module;
+        $this->sender = $sender;
     }
 
     public function getClassStars()
@@ -188,6 +203,11 @@ class Review
             }
         }
         return $stars;
+    }
+
+    public function __toString()
+    {
+        return 'Avis n°'.$this->id.' de '.$this->sender;
     }
 }
 

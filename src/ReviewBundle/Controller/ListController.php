@@ -5,8 +5,8 @@ namespace ReviewBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use ReviewBundle\Entity;
-use ReviewBundle\Entity\ReviewTmp;
-use ReviewBundle\Repository\ReviewRepositoryTmp;
+use ReviewBundle\Entity\Review;
+use ReviewBundle\Repository\ReviewRepository;
 use Symfony\Component\HttpFoundation\Request;
 
 class ListController extends Controller
@@ -18,8 +18,8 @@ class ListController extends Controller
     {
         $refValue= $request->get('refvalue');
         $order= $request->get('order');
-        $reviewRepository =  new ReviewRepositoryTmp();
-        $reviews = $reviewRepository->getAllReviews();
+        $reviewRepository = $this->getDoctrine()->getRepository(Review::class);
+        $reviews = $reviewRepository->findAll();
         usort($reviews,$this->buildSorter($refValue,$order));
         return $this->render('ReviewBundle:List:list.html.twig',[
             'reviews'=> $reviews
