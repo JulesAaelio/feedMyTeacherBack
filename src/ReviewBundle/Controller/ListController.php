@@ -16,16 +16,15 @@ class ListController extends Controller
      */
     public function listAction(Request $request)
     {
-        $refValue= $request->get('refvalue');
-        $order= $request->get('order');
+        $sortBy = $request->get('sortby') ?? 'id';
+        $order = $request->get('order') ?? 'ASC';
         $reviewRepository = $this->getDoctrine()->getRepository(Review::class);
-        $reviews = $reviewRepository->findAll();
-        usort($reviews,$this->buildSorter($refValue,$order));
-        return $this->render('ReviewBundle:List:list.html.twig',[
-            'reviews'=> $reviews
+        $reviews = $reviewRepository->findBy(array(),array($sortBy => $order));
+//        usort($reviews, $this->buildSorter($refValue, $order));
+        return $this->render('ReviewBundle:List:list.html.twig', [
+            'reviews' => $reviews
         ]);
     }
-
     public static function buildSorter($refValue,$order)
     {
         return function ($a,$b) use ($refValue,$order)
