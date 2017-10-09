@@ -13,6 +13,7 @@ class ListController extends Controller
 {
     /**
      * @Route("/list", name="review_list")
+     * @Route("/", name="homepage")
      */
     public function listAction(Request $request)
     {
