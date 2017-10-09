@@ -9,19 +9,27 @@
 namespace ReviewBundle\Controller;
 
 use ReviewBundle\Entity\Review;
+use ReviewBundle\Entity\Student;
 use ReviewBundle\Repository\ReviewRepository;
+use ReviewBundle\Repository\StudentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 
-class CreateController extends Controller
+class StudentDashboardController extends Controller
 {
     /**
      * @Route("/review", name="student_dashboard")
      */
     public function createReview()
     {
-        return new Response('OK');
+        $studentRepository = $this->getDoctrine()->getRepository(Student::class);
+        $connectedStudent = $studentRepository->find(8);
+
+        $modules = $connectedStudent->getDivision()->getModules();
+        return $this->render('ReviewBundle:StudentDashboard:studentDashboard.html.twig', [
+            'modules' => $modules
+        ]);
     }
 }
 

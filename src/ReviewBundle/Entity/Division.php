@@ -104,6 +104,24 @@ class Division
         return $this->grade;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getModules()
+    {
+        return $this->modules;
+    }
+
+    /**
+     * @param mixed $modules
+     */
+    public function setModules($modules)
+    {
+        $this->modules = $modules;
+    }
+
+
+
     public function __construct(string $school,string $grade)
     {
         $this->school = $school;

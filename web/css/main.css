@@ -55,3 +55,9 @@ h1
 {
     color: #7F7F7F;
 }
+
+.container
+{
+    width: 100%;
+    max-width: 100%;
+}

@@ -1,0 +1,18 @@
+{% extends 'ReviewBundle:StudentDashboard:dashboard.html.twig' %}
+{% block title%}
+    STUDENT DASHBOARD
+{% endblock %}
+{% block modulesList %}
+<ul class="review-list">
+    {% for module in modules %}
+        <li class="review">
+            <a href="{{ url('student_dashboard', {'module': module.id })}}">
+                <div>{{ module.subject }}</div>
+                <div> {{ module.teacher }} </div>
+            </a>
+        </li>
+    {% else %}
+        <li>No feedback yet ! Be the first to feedback ! (Nah you can't because students did'nt worked enough !)</li>
+    {% endfor %}
+</ul>
+{% endblock %}
