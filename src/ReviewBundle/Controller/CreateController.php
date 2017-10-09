@@ -21,14 +21,6 @@ class CreateController extends Controller
      */
     public function createReview()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $em->persist(new Review(5, 'tip_top', 0, 'pas tip top'));
-        $em->persist(new Review(5, 'tik tok', 5, 'Make the party non stop'));
-        $em->persist(new Review(5, 'MA-CHA-LAH LE PROF', 1, 'Pas écouté. Je regardais le prof'));
-
-        $em->flush();
-
         return new Response('OK');
     }
 }

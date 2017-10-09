@@ -20,33 +20,8 @@ class ListController extends Controller
         $order = $request->get('order') ?? 'ASC';
         $reviewRepository = $this->getDoctrine()->getRepository(Review::class);
         $reviews = $reviewRepository->findBy(array(),array($sortBy => $order));
-//        usort($reviews, $this->buildSorter($refValue, $order));
         return $this->render('ReviewBundle:List:list.html.twig', [
             'reviews' => $reviews
         ]);
-    }
-    public static function buildSorter($refValue,$order)
-    {
-        return function ($a,$b) use ($refValue,$order)
-        {
-
-            if($refValue == 'class')
-            {
-                $a = $a->getClassRate();
-                $b = $b->getClassRate();
-            }
-            else if($refValue == 'teacher')
-            {
-                $a = $a->getTeacherRate();
-                $b = $b->getTeacherRate();
-            }
-
-            return $order == 'ASC' ?
-                $a <=> $b :
-                $b <=> $a
-                ;
-
-            return $result;
-        };
     }
 }
