@@ -6,7 +6,7 @@
 <ul class="review-list">
     {% for module in modules %}
         <li class="review">
-            <a href="{{ url('student_dashboard', {'module': module.id })}}">
+            <a href="{{ url('student_dashboard', {'moduleId': module.id })}}">
                 <div>{{ module.subject }}</div>
                 <div> {{ module.teacher }} </div>
             </a>
@@ -14,5 +14,18 @@
     {% else %}
         <li>No feedback yet ! Be the first to feedback ! (Nah you can't because students did'nt worked enough !)</li>
     {% endfor %}
+
 </ul>
+{% endblock %}
+{% block moduleDetail %}
+    {% if(module != null) %}
+        <img class="rounded-circle" src="http://placehold.it/200x200"/>
+        <div> {{ module.subject }} </div>
+        <div> {{ module.teacher }}</div>
+        <div> Du : 10/07/07 </div>
+        <div> Au : 17/07:07 </div>
+    {% endif %}
+{% endblock %}
+{% block review %}
+    {% include 'ReviewBundle:StudentDashboard:reviewForm.html.twig' %}
 {% endblock %}

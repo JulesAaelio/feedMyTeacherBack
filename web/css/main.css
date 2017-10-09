@@ -61,3 +61,16 @@ h1
     width: 100%;
     max-width: 100%;
 }
+
+.module-detail
+{
+    height:100%;
+    min-height:100%;
+    box-shadow: #00AE9C 2px 2px;
+    text-align: center;
+}
+
+.review-pane
+{
+    box-shadow: #EC4363 2px 2px;
+}
