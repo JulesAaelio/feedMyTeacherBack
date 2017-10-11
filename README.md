@@ -16,11 +16,15 @@ make start
 ```
 
 ### Progress report : 
-[X] List controller
-[X] Review controller 
-[X] Class / Database model reflexion 
-[X] Implement model with Doctrine 
-[] Discuss UX, draw frame views
+- [X] List controller
+- [X] Review controller 
+- [X] Class / Database model reflexion 
+- [X] Implement model with Doctrine 
+- [X] Discuss UX, draw frame views
+- [X] Create login form 
+- [X] Link login with database users and encrypt password 
+- [ ] Register form ? 
+- [ ] Login form
 
 
 
