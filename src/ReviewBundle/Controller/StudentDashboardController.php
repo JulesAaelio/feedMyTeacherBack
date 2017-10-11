@@ -20,6 +20,7 @@ use Symfony\Component\HttpFoundation\Response;
 class StudentDashboardController extends Controller
 {
     /**
+     * @Route("/",name="root")
      * @Route("/review/{moduleId}", name="student_dashboard")
      */
     public function createReview($moduleId = null)
@@ -29,14 +30,23 @@ class StudentDashboardController extends Controller
 
         $modules = $connectedStudent->getDivision()->getModules();
         $module = null;
+        $review = null;
         if($moduleId) {
             $moduleRepository = $this->getDoctrine()->getRepository(Module::class);
             $module = $moduleRepository->find($moduleId);
+
+            $reviewRepository = $this->getDoctrine()->getRepository(Review::class);
+            $review = $reviewRepository->findBy(array('module'=>$module,'sender'=>$connectedStudent));
+
         }
+
+
+
 
         return $this->render('ReviewBundle:StudentDashboard:studentDashboard.html.twig', [
             'modules' => $modules,
-            'module' => $module
+            'module' => $module,
+            'review' => $review,
         ]);
     }
 }

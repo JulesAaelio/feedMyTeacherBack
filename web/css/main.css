@@ -74,3 +74,18 @@ h1
 {
     box-shadow: #EC4363 2px 2px;
 }
+
+.container
+{
+    margin-top: 10px;
+}
+
+.detail-image
+{
+    margin: 10px;
+}
+
+.margin-centered
+{
+    margin: auto;
+}

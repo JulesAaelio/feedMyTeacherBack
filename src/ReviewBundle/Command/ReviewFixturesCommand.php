@@ -60,6 +60,9 @@ class ReviewFixturesCommand extends ContainerAwareCommand
         ];
         foreach ($teachers as $teacher)
         {
+            $encoder = $this->getContainer()->get('security.password_encoder');
+            $password = $encoder->encodePassword($teacher,'p@ssw0rd');
+            $teacher->setPassword($password);
             $em->persist($teacher);
         }
 
@@ -85,6 +88,9 @@ class ReviewFixturesCommand extends ContainerAwareCommand
         ];
         foreach ($students as $student)
         {
+            $encoder = $this->getContainer()->get('security.password_encoder');
+            $password = $encoder->encodePassword($student,'p@ssw0rd');
+            $student->setPassword($password);
             $em->persist($student);
         }
 
