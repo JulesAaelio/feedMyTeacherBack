@@ -94,9 +94,9 @@ class ReviewFixturesCommand extends ContainerAwareCommand
             $em->persist($student);
         }
 
-        $em->persist(new Review(5, 'tip_top', 0, 'pas tip top',$modules[0],$students[0]));
-        $em->persist(new Review(5, 'tik tok', 5, 'Make the party non stop',$modules[1],$students[1]));
-        $em->persist(new Review(5, 'MA-CHA-LAH LE PROF', 1, 'Pas écouté. Je regardais le prof',$modules[2],$students[2]));
+        $em->persist( Review::createFull(5, 'tip_top', 0, 'pas tip top',$modules[0],$students[0]));
+        $em->persist( Review::createFull(5, 'tik tok', 5, 'Make the party non stop',$modules[1],$students[1]));
+        $em->persist( Review::createFull(5, 'MA-CHA-LAH LE PROF', 1, 'Pas écouté. Je regardais le prof',$modules[2],$students[2]));
         $em->flush();
         $output->writeln('<info>OK.</info>');
     }

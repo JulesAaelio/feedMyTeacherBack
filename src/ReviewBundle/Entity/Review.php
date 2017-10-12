@@ -169,15 +169,20 @@ class Review
         return $this->classReview;
     }
 
-    public function __construct(int $teacherRate,string $teacherReview,int $classRate,string $classReview,$module,$sender)
+
+    // Review::createFull
+    public static function createFull(int $teacherRate,string $teacherReview,int $classRate,string $classReview,$module,$sender)
     {
-        $this->teacherRate = $teacherRate;
-        $this->teacherReview = $teacherReview;
-        $this->classRate = $classRate;
-        $this->classReview = $classReview;
-        $this->module = $module;
-        $this->sender = $sender;
+        $review = new Review();
+        $review->teacherRate = $teacherRate;
+        $review->teacherReview = $teacherReview;
+        $review->classRate = $classRate;
+        $review->classReview = $classReview;
+        $review->module = $module;
+        $review->sender = $sender;
+        return $review;
     }
+
 
     public function getClassStars()
     {
