@@ -72,6 +72,7 @@ class Student extends User
     {
         parent::__construct($firstName, $lastName);
         $this->division = $division;
+        $this->addRole('ROLE_STUDENT');
     }
 
 }

@@ -38,6 +38,7 @@ class Teacher extends User
     public function __construct($firstName, $lastName)
     {
         parent::__construct($firstName, $lastName);
+        $this->addRole('ROLE_TEACHER');
     }
 
 }

@@ -62,12 +62,18 @@ abstract class User implements UserInterface, \Serializable
     private $isActive;
 
     /**
+     * @ORM\Column(name="roles",type="simple_array")
+     */
+    private $roles;
+
+    /**
      * @return mixed
      */
     public function getUsername()
     {
         return $this->username;
     }
+
 
     /**
      * @return mixed
@@ -90,7 +96,7 @@ abstract class User implements UserInterface, \Serializable
 
     public function getRoles()
     {
-        return array('ROLE_USER');
+        return $this->roles;
     }
 
     /**
@@ -158,6 +164,7 @@ abstract class User implements UserInterface, \Serializable
         $this->username = strtolower($firstName.'.'.$lastName);
         $this->email = strtolower($firstName.'.'.$lastName.'@ynov.com');
         $this->isActive = true;
+        $this->roles = array('ROLE_USER');
     }
 
     public function __toString()
@@ -192,6 +199,11 @@ abstract class User implements UserInterface, \Serializable
     public function setPassword($password)
     {
         $this->password = $password;
+    }
+
+    protected function addRole(string $role)
+    {
+        $this->roles[] = $role;
     }
 
 
