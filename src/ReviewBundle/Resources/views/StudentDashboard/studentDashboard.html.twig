@@ -30,6 +30,8 @@
 
 {% block review %}
     {% if (module != null) %}
-    {% include 'ReviewBundle:StudentDashboard:reviewForm.html.twig' %}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
     {% endif %}
 {% endblock %}
