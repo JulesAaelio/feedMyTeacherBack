@@ -3,8 +3,11 @@ FeedMyTeacherBack
 A symfony based school project. 
 
 ### Who's behind  : 
-- @JulesAaelio
-- @AlexandraRamadour
+@JulesAaelio and @AlexandraRamadour
+
+### What's the point ? : 
+Provide a tool that allow student to give feedback on their classes / teachers. 
+
 
 ###How to install :
 ```
@@ -13,6 +16,12 @@ vagrant up
 vagrant ssh
 make fixtures
 make start 
+```
+
+### Test users :
+``` 
+Username : hacen.sehef
+Password : p@ssw0rd
 ```
 
 ### Progress report : 

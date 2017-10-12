@@ -3,6 +3,7 @@
 namespace ReviewBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Review
@@ -23,7 +24,12 @@ class Review
 
     /**
      * @var int
-     *
+     * @Assert\Range(
+     *     min = 0,
+     *     max = 5,
+     *     minMessage = "La note doit être comprise entre 0 et 5",
+     *     maxMessage = "La note doit être comprise entre 0 et 5"
+     * )
      * @ORM\Column(name="teacherRate", type="integer")
      */
     private $teacherRate;
@@ -37,7 +43,12 @@ class Review
 
     /**
      * @var int
-     *
+     * @Assert\Range(
+     *     min = 0,
+     *     max = 5,
+     *     minMessage = "La note doit être comprise entre 0 et 5",
+     *     maxMessage = "La note doit être comprise entre 0 et 5"
+     * )
      * @ORM\Column(name="classRate", type="integer")
      */
     private $classRate;
@@ -169,15 +180,20 @@ class Review
         return $this->classReview;
     }
 
-    public function __construct(int $teacherRate,string $teacherReview,int $classRate,string $classReview,$module,$sender)
+
+    // Review::createFull
+    public static function createFull(int $teacherRate,string $teacherReview,int $classRate,string $classReview,$module,$sender)
     {
-        $this->teacherRate = $teacherRate;
-        $this->teacherReview = $teacherReview;
-        $this->classRate = $classRate;
-        $this->classReview = $classReview;
-        $this->module = $module;
-        $this->sender = $sender;
+        $review = new Review();
+        $review->teacherRate = $teacherRate;
+        $review->teacherReview = $teacherReview;
+        $review->classRate = $classRate;
+        $review->classReview = $classReview;
+        $review->module = $module;
+        $review->sender = $sender;
+        return $review;
     }
+
 
     public function getClassStars()
     {
@@ -209,5 +225,39 @@ class Review
     {
         return 'Avis n°'.$this->id.' de '.$this->sender;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getModule()
+    {
+        return $this->module;
+    }
+
+    /**
+     * @param mixed $module
+     */
+    public function setModule($module)
+    {
+        $this->module = $module;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSender()
+    {
+        return $this->sender;
+    }
+
+    /**
+     * @param mixed $sender
+     */
+    public function setSender($sender)
+    {
+        $this->sender = $sender;
+    }
+
+
 }
 
