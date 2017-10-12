@@ -25,8 +25,11 @@ class StudentDashboardController extends Controller
      */
     public function createReview($moduleId = null)
     {
-        $studentRepository = $this->getDoctrine()->getRepository(Student::class);
-        $connectedStudent = $studentRepository->find(8);
+//        $studentRepository = $this->getDoctrine()->getRepository(Student::class);
+//        $connectedStudent = $studentRepository->find(8);
+
+        $connectedStudent = $this->getUser();
+
 
         $modules = $connectedStudent->getDivision()->getModules();
         $module = null;

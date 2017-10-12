@@ -27,8 +27,9 @@
         <div> Au : 17/07:07 </div>
     {% endif %}
 {% endblock %}
+
 {% block review %}
     {% if (module != null) %}
-        {% include 'ReviewBundle:StudentDashboard:reviewForm.html.twig' %}
+    {% include 'ReviewBundle:StudentDashboard:reviewForm.html.twig' %}
     {% endif %}
 {% endblock %}
