@@ -3,6 +3,8 @@
 namespace ReviewBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * User
@@ -13,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorColumn(name="discr", type="string")
  * @ORM\DiscriminatorMap({"student" = "Student","teacher" = "Teacher"})
  */
-abstract class User
+abstract class User implements UserInterface, \Serializable
 {
     /**
      * @var int
@@ -38,6 +40,64 @@ abstract class User
      */
     private $lastName;
 
+
+    /**
+     * @ORM\Column(type="string", length=25, unique=true)
+     */
+    private $username;
+
+    /**
+     * @ORM\Column(type="string", length=64)
+     */
+    private $password;
+
+    /**
+     * @ORM\Column(type="string", length=60, unique=true)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    private $isActive;
+
+    /**
+     * @ORM\Column(name="roles",type="simple_array")
+     */
+    private $roles;
+
+    /**
+     * @return mixed
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+
+    public function getSalt()
+    {
+        return null;
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    public function getRoles()
+    {
+        return $this->roles;
+    }
 
     /**
      * Get id
@@ -101,11 +161,51 @@ abstract class User
     {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
+        $this->username = strtolower($firstName.'.'.$lastName);
+        $this->email = strtolower($firstName.'.'.$lastName.'@ynov.com');
+        $this->isActive = true;
+        $this->roles = array('ROLE_USER');
     }
 
     public function __toString()
     {
         return $this->lastName.' '.$this->firstName;
     }
+
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt,
+        ));
+    }
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt
+            ) = unserialize($serialized);
+    }
+
+    /**
+     * @param mixed $password
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
+
+    protected function addRole(string $role)
+    {
+        $this->roles[] = $role;
+    }
+
+
 }
 

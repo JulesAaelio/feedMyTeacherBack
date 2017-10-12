@@ -1,3 +1,6 @@
+
+
+
 @font-face {
     font-family: glyphicons;
     src: url(/fonts/aaelio_glyphicons.ttf);
@@ -47,3 +50,47 @@ h1
     font-weight: bold;
 }
 
+
+.navbar-light
+{
+    color: #7F7F7F;
+}
+
+.container
+{
+    width: 100%;
+    max-width: 100%;
+}
+
+.module-detail,.review-pane
+{
+    height:100%;
+    min-height:100%;
+
+}
+
+.module-detail
+{
+    text-align: center;
+    box-shadow: #00AE9C 2px 2px;
+}
+
+.review-pane
+{
+    box-shadow: #EC4363 2px 2px;
+}
+
+.container
+{
+    margin-top: 10px;
+}
+
+.detail-image
+{
+    margin: 10px;
+}
+
+.margin-centered
+{
+    margin: auto;
+}

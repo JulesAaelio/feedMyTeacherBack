@@ -1,4 +1,17 @@
+user:
+    resource: "@UserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+admin:
+    resource: "@AdminBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 review:
     resource: "@ReviewBundle/Controller/"
     type:     annotation
     prefix:   /
+
+logout:
+    path : /logout

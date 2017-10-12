@@ -1,0 +1,35 @@
+{% extends 'ReviewBundle:StudentDashboard:dashboard.html.twig' %}
+{% block title%}
+    STUDENT DASHBOARD
+{% endblock %}
+
+{% block modulesList %}
+<ul class="review-list">
+    {% for module in modules %}
+        <li class="review">
+            <a href="{{ url('student_dashboard', {'moduleId': module.id })}}">
+                <div class="font-weight-bold"> {{ module.subject }}</div>
+                <div> {{ module.teacher }} </div>
+            </a>
+        </li>
+    {% else %}
+        <li>No feedback yet ! Be the first to feedback ! (Nah you can't because students did'nt worked enough !)</li>
+    {% endfor %}
+
+</ul>
+{% endblock %}
+{% block moduleDetail %}
+    {% if(module != null) %}
+        <img class="rounded-circle detail-image" src="http://placehold.it/200x200"/>
+        <h4> {{ module.subject }} </h4>
+        <h5> {{ module.teacher }}</h5>
+        <div> Du : 10/07/07 </div>
+        <div> Au : 17/07:07 </div>
+    {% endif %}
+{% endblock %}
+
+{% block review %}
+    {% if (module != null) %}
+    {% include 'ReviewBundle:StudentDashboard:reviewForm.html.twig' %}
+    {% endif %}
+{% endblock %}
