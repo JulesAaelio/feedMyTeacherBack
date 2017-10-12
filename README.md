@@ -18,6 +18,12 @@ make fixtures
 make start 
 ```
 
+### Test users :
+``` 
+Username : hacen.sehef
+Password : p@ssw0rd
+```
+
 ### Progress report : 
 - [X] List controller
 - [X] Review controller 

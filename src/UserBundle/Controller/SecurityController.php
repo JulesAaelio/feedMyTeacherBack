@@ -27,4 +27,12 @@ class SecurityController extends Controller
             'error'         => $error,
         ));
     }
+
+    /**
+     * @Route("/register",name="register")
+     */
+    public function registerAction(Request $request)
+    {
+        return $this->render('UserBundle:Security:register.html.twig');
+    }
 }
