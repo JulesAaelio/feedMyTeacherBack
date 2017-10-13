@@ -2,5 +2,9 @@
 {# ... you will probably extend your base template, like base.html.twig #}
 {% extends 'base.html.twig' %}
 {% block body %}
-    Cette page est en cours de création.
+    <div class="col-md-6 margin-centered">
+        <h1>CREATE A (STUDENT) ACCOUNT :</h1>
+        {% form_theme form 'bootstrap_3_layout.html.twig' 'ReviewBundle:Form:custom_form_layout.html.twig'  %}
+        {{ form(form) }}
+    </div>
 {% endblock %}

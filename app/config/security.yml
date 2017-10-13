@@ -7,7 +7,7 @@ security:
         our_db_provider:
             entity:
                 class: ReviewBundle:User
-                property: username
+                property: email
                 # if you're using multiple entity managers
                 # manager_name: customer
 

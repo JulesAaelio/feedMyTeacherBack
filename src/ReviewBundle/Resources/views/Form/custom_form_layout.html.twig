@@ -1,3 +1,4 @@
+{% use "bootstrap_3_layout.html.twig" %}
 {% block form_errors -%}
     {% if errors|length > 0 -%}
             <ul class="list-unstyled alert alert-danger">
@@ -9,3 +10,10 @@
             </ul>
     {%- endif %}
 {%- endblock form_errors %}
+
+{% block button_widget -%}
+    {% set attr = attr|merge({class: (attr.class|default('btn-default btn-lg btn-block') ~ ' btn')|trim}) %}
+    {{- parent() -}}
+{%- endblock %}
+
+

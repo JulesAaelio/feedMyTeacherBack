@@ -41,10 +41,10 @@ abstract class User implements UserInterface, \Serializable
     private $lastName;
 
 
-    /**
-     * @ORM\Column(type="string", length=25, unique=true)
-     */
-    private $username;
+//    /**
+//     * @ORM\Column(type="string", length=25, unique=true)
+//     */
+//    private $username;
 
     /**
      * @ORM\Column(type="string", length=64)
@@ -71,9 +71,8 @@ abstract class User implements UserInterface, \Serializable
      */
     public function getUsername()
     {
-        return $this->username;
+        return $this->firstName.' '.$this->lastName;
     }
-
 
     /**
      * @return mixed
@@ -157,12 +156,13 @@ abstract class User implements UserInterface, \Serializable
         return $this->lastName;
     }
 
-    public function __construct(string $firstName,string $lastName)
+    public function __construct(string $firstName = null,string $lastName = null,string $email = null )
     {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
-        $this->username = strtolower($firstName.'.'.$lastName);
-        $this->email = strtolower($firstName.'.'.$lastName.'@ynov.com');
+        $this->email = $email;
+//        $this->username = strtolower($firstName.'.'.$lastName);
+//        $this->email = strtolower($firstName.'.'.$lastName.'@ynov.com');
         $this->isActive = true;
         $this->roles = array('ROLE_USER');
     }
@@ -176,7 +176,7 @@ abstract class User implements UserInterface, \Serializable
     {
         return serialize(array(
             $this->id,
-            $this->username,
+            $this->email,
             $this->password,
             // see section on salt below
             // $this->salt,
@@ -186,12 +186,29 @@ abstract class User implements UserInterface, \Serializable
     {
         list (
             $this->id,
-            $this->username,
+            $this->email,
             $this->password,
             // see section on salt below
             // $this->salt
             ) = unserialize($serialized);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
 
     /**
      * @param mixed $password
@@ -201,7 +218,7 @@ abstract class User implements UserInterface, \Serializable
         $this->password = $password;
     }
 
-    protected function addRole(string $role)
+    public function addRole(string $role)
     {
         $this->roles[] = $role;
     }

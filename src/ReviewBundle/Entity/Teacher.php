@@ -35,9 +35,9 @@ class Teacher extends User
         return $this->id;
     }
 
-    public function __construct($firstName, $lastName)
+    public function __construct($firstName = null , $lastName = null, $email = null ,$division = null )
     {
-        parent::__construct($firstName, $lastName);
+        parent::__construct($firstName, $lastName, $email);
         $this->addRole('ROLE_TEACHER');
     }
 

@@ -11,14 +11,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Student extends User
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+//    /**
+//     * @var int
+//     *
+//     * @ORM\Column(name="id", type="integer")
+//     * @ORM\Id
+//     * @ORM\GeneratedValue(strategy="AUTO")
+//     */
+//    private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="Division", inversedBy="students")
@@ -34,15 +34,15 @@ class Student extends User
 
 
 
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+//    /**
+//     * Get id
+//     *
+//     * @return int
+//     */
+//    public function getId()
+//    {
+//        return $this->id;
+//    }
 
     /**
      * Set division
@@ -68,9 +68,9 @@ class Student extends User
         return $this->division;
     }
 
-    public function __construct($firstName, $lastName,$division)
+    public function __construct($firstName = null , $lastName = null, $email = null ,$division = null )
     {
-        parent::__construct($firstName, $lastName);
+        parent::__construct($firstName, $lastName, $email);
         $this->division = $division;
         $this->addRole('ROLE_STUDENT');
     }
