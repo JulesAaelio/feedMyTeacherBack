@@ -34,7 +34,7 @@
     {% endif %}
 
     {% if module != null and review == null %}
-        {#{% form_theme form 'bootstrap_3_layout.html.twig' 'ReviewBundle:Form:custom_form_layout.html.twig'  %}#}
+        {% form_theme form 'bootstrap_3_layout.html.twig' 'ReviewBundle:Form:custom_form_layout.html.twig'  %}
             {{ form_start(form) }}
                 {{ form_errors(form) }}
                 <h4>L'intervenant : </h4>
@@ -43,7 +43,8 @@
                 <h4> Le cours : </h4>
                 {{ form_row(form.classRate) }}
                 {{ form_row(form.classReview) }}
-            {#{{ form_widget(form) }}#}
+            {{ form_widget(form) }}
             {{ form_end(form) }}
         {% endif %}
     {% endblock %}
+

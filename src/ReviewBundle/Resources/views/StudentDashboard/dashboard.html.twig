@@ -3,14 +3,23 @@
     <div class="row">
         <div class="col-md-3">
             {% block modulesList %}
+                {{ render(controller('ReviewBundle:ModuleList:list')) }}
             {% endblock %}
         </div>
         <div class="col-md-3 module-detail">
             {% block moduleDetail %}
+                {{ render(controller(
+                'ReviewBundle:ModuleDetail:detail',
+                { 'moduleId': moduleId  }
+                )) }}
             {% endblock %}
         </div>
         <div class="col-md-6 review-pane">
             {% block review %}
+                {{ render(controller(
+                'ReviewBundle:Review:displayOwn',
+                { 'moduleId': moduleId  }
+                )) }}
             {% endblock %}
         </div>
     </div>
