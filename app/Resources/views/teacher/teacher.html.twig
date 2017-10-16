@@ -1,0 +1,13 @@
+{% block show_path %}
+    {{ path('admin_teachers_show', { 'id': user.id }) }}
+{% endblock %}
+{% block edit_path %}
+    {{ path('admin_teachers_edit', { 'id': user.id }) }}
+{% endblock %}
+{% block index_path %}
+    {{ path('admin_teachers_index') }}
+{% endblock %}
+{% block type %}
+    PROFESSEUR
+{% endblock %}
+

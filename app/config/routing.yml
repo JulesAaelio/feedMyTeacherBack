@@ -1,3 +1,15 @@
+review_user:
+    resource: "@ReviewBundle/Controller/UserController.php"
+    type:     annotation
+
+review_teacher:
+    resource: "@ReviewBundle/Controller/TeacherController.php"
+    type:     annotation
+
+review_student:
+    resource: "@ReviewBundle/Controller/StudentController.php"
+    type:     annotation
+
 user:
     resource: "@UserBundle/Controller/"
     type:     annotation

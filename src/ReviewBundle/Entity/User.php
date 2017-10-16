@@ -223,6 +223,23 @@ abstract class User implements UserInterface, \Serializable
         $this->roles[] = $role;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getisActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * @param mixed $isActive
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+    }
+
+
 
 }
 

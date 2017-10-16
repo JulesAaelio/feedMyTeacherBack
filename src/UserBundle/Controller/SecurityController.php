@@ -56,6 +56,14 @@ class SecurityController extends Controller
             $em->persist($newStudent);
             $em->flush();
 
+            $message = (new \Swift_Message("Let s feed teachers back ! "))
+                    ->setFrom('noreply@wedonothaveadomainyet.com')
+                    ->setTo($student->getEmail())
+                    ->setBody($this->renderView('UserBundle:Mail:welcome.html.twig',
+                    array('student' => $student)),'text/html');
+            $mailer = $this->get('mailer');
+            $mailer->send($message);
+
             return $this->redirectToRoute('root');
         }
         $formView = $form->createView();
