@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>FEEDBACK</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ review.id }}</td>
+            </tr>
+            <tr>
+                <th>Teacherrate</th>
+                <td>{{ review.teacherRate }}</td>
+            </tr>
+            <tr>
+                <th>Teacherreview</th>
+                <td>{{ review.teacherReview }}</td>
+            </tr>
+            <tr>
+                <th>Classrate</th>
+                <td>{{ review.classRate }}</td>
+            </tr>
+            <tr>
+                <th>Classreview</th>
+                <td>{{ review.classReview }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="col-md-12">
+            <a class="btn btn-default btn-block btn-lg btn-pink" href="{{ path('admin_review_edit', { 'id': review.id }) }}">Edit</a>
+        </div>
+    </div>
+    <div class="row justify-content-around">
+        <div class="col-md-6">
+            <a class="btn btn-default btn-block btn-lg btn-grey" href="{{ path('admin_review_index') }}">Back to the list</a>
+        </div>
+        <div class="col-md-6">
+            {{ form(delete_form) }}
+        </div>
+    </div>
+
+{% endblock %}
