@@ -37,7 +37,7 @@ class Review
     /**
      * @var string
      *
-     * @ORM\Column(name="teacherReview", type="string", length=255)
+     * @ORM\Column(name="teacherReview", type="text")
      */
     private $teacherReview;
 
@@ -56,7 +56,7 @@ class Review
     /**
      * @var string
      *
-     * @ORM\Column(name="classReview", type="string", length=255)
+     * @ORM\Column(name="classReview", type="text")
      */
     private $classReview;
 
@@ -197,16 +197,17 @@ class Review
 
     public function getClassStars()
     {
-        return $this->rateToStars($this->classRate);
+        return Review::rateToStars($this->classRate);
     }
 
     public function getTeacherStars()
     {
-        return $this->rateToStars($this->teacherRate);
+        return Review::rateToStars($this->teacherRate);
     }
 
-    private function rateToStars($rate)
+    public static function rateToStars($rate)
     {
+        $rate = round($rate,0);
         $stars = '';
         for($i = 0;$i < 5;$i++)
         {

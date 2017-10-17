@@ -1,4 +1,4 @@
-FeedMyTeacherBack
+FeedMyTeacherBack :briefcase: :mortar_board:
 =================
 A symfony based school project. 
 
@@ -7,7 +7,6 @@ A symfony based school project.
 
 ### What's the point ? : 
 Provide a tool that allow student to give feedback on their classes / teachers. 
-
 
 ###How to install :
 ```
@@ -18,9 +17,20 @@ make fixtures
 make start 
 ```
 
-### Test users :
+### Test users : 
 ``` 
-Username : hacen.sehef
+##Student 
+Username : titouan.galvani@ynov.com
+Password : p@ssw0rd
+```
+``` 
+##Teacher 
+Username : gabriel.pillet@ynov.com
+Password : p@ssw0rd
+```
+``` 
+##Admin 
+Username : alexandra.ramadour@ynov.com
 Password : p@ssw0rd
 ```
 
@@ -32,8 +42,12 @@ Password : p@ssw0rd
 - [X] Discuss UX, draw frame views
 - [X] Create login form 
 - [X] Link login with database users and encrypt password 
-- [ ] Register form ? 
-- [ ] Login form
+- [X] Register form 
+- [X] Login form
+- [X] CRUD 
+    - [ ] Subjects crud 
+- [ ] Class president interface 
+- [ ] Avatars implementation
 
-
+:clap: :clap:
 

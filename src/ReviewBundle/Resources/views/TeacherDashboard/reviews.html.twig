@@ -2,4 +2,8 @@
     <div class="review">
         {% include 'ReviewBundle:Dashboard:review.html.twig' %}
     </div>
+{% else %}
+    <div class="review">
+        AUCUN RETOUR SUR CE MODULE
+    </div>
 {% endfor %}

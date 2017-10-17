@@ -2,6 +2,10 @@
 <img class="rounded-circle detail-image" src="http://placehold.it/200x200"/>
 <h4> {% block headerLine %}  {% endblock %}</h4>
 <h5> {% block subHeaderLine %} {% endblock %}</h5>
-<div> Du : 10/07/07 </div>
-<div> Au : 17/07:07 </div>
+<div>
+    <span>Classe : </span><span class="icon">{{ module.averageClassRateStars}}</span>
+</div>
+<div>
+    <span>Intervenant : </span><span class="icon">{{ module.averageTeacherRateStars }}</span>
+</div>
 {% endif %}

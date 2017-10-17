@@ -13,6 +13,8 @@
                 <th>Teacherreview</th>
                 <th>Classrate</th>
                 <th>Classreview</th>
+                <th>Module</th>
+                <th>Sender</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -24,6 +26,8 @@
                 <td>{{ review.teacherReview }}</td>
                 <td>{{ review.classRate }}</td>
                 <td>{{ review.classReview }}</td>
+                <td>{{ review.module }}</td>
+                <td>{{ review.sender }}</td>
                 <td>
                     <a class="btn btn-default btn-green" href="{{ path('admin_review_show', { 'id': review.id }) }}">SHOW</a>
                 </td>
