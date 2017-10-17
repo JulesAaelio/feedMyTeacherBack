@@ -1,0 +1,18 @@
+{% extends 'ReviewBundle:Dashboard:dashboard.html.twig' %}
+{% block modulesList %}
+    {{ render(controller('ReviewBundle:ModuleList:listForTeacher')) }}
+{% endblock %}
+{% block moduleDetail %}
+    {{ render(controller(
+    'ReviewBundle:ModuleDetail:detailForTeacher',
+    { 'moduleId': moduleId  }
+    )) }}
+{% endblock %}
+{% block review %}
+    {% if moduleId != null %}
+    {{ render(controller(
+    'ReviewBundle:ReviewDisplay:displayAll',
+    { 'moduleId': moduleId  }
+    )) }}
+    {% endif %}
+{% endblock %}

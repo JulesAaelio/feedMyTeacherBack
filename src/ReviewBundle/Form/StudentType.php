@@ -7,14 +7,15 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ReviewType extends AbstractType
+class StudentType extends UserType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('teacherRate')->add('teacherReview')->add('classRate')->add('classReview')->add('module')->add('sender')
+        parent::buildForm($builder,$options);
+        $builder->add('division')
             ->add('save', SubmitType::class, array('label' => "VALIDER"));
     }
     
@@ -24,7 +25,7 @@ class ReviewType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ReviewBundle\Entity\Review'
+            'data_class' => 'ReviewBundle\Entity\Student'
         ));
     }
 
@@ -33,7 +34,7 @@ class ReviewType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'reviewbundle_review';
+        return 'reviewbundle_student';
     }
 
 

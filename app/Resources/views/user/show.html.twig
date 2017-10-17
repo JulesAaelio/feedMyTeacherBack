@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+    <div class="col-md-6 margin-centered">
+    <h1>{% block type %}{% endblock %}</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ user.firstName }}</td>
+            </tr>
+            <tr>
+                <th>NOM</th>
+                <td>{{ user.lastName }}</td>
+            </tr>
+            {% block more_infos %}
+            {% endblock %}
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+        <a class="btn btn-default btn-block btn-lg btn-pink" href="{% block edit_path %}{% endblock %}">Edit</a>
+        </div>
+    </div>
+    <div class="row justify-content-around">
+        <div class="col-md-6">
+            <a class="btn btn-default btn-block btn-lg btn-grey" href="{% block index_path %}{% endblock %}">Back to the list</a>
+        </div>
+        <div class="col-md-6">
+            {{ form(delete_form) }}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'user/index.html.twig' %}
+{% use 'student/student.html.twig' %}
+
+{% block more_headers %}
+    <th>CLASSE</th>
+{% endblock %}
+{% block more_values %}
+    <td> {{ user.division }}</td>
+{% endblock %}

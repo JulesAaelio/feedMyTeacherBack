@@ -1,0 +1,4 @@
+{% extends 'ReviewBundle:Dashboard:moduleList.html.twig' %}
+{% block detailRoute %}{{ url('student_dashboard', {'moduleId': module.id })}}{% endblock %}
+{% block headerLine %} {{ module.subject }} {% endblock %}
+{% block subHeaderLine %} {{ module.teacher }} {% endblock %}

@@ -1,17 +1,19 @@
-{% extends 'base.html.twig' %}
-{% block body %}
-    <div class="row">
-        <div class="col-md-3">
-            {% block modulesList %}
-            {% endblock %}
-        </div>
-        <div class="col-md-3 module-detail">
-            {% block moduleDetail %}
-            {% endblock %}
-        </div>
-        <div class="col-md-6 review-pane">
-            {% block review %}
-            {% endblock %}
-        </div>
-    </div>
+{% extends 'ReviewBundle:Dashboard:dashboard.html.twig' %}
+{% block modulesList %}
+    {{ render(controller('ReviewBundle:ModuleList:list')) }}
+{% endblock %}
+{% block moduleDetail %}
+    {{ render(controller(
+    'ReviewBundle:ModuleDetail:detail',
+    { 'moduleId': moduleId  }
+    )) }}
+{% endblock %}
+{% block review %}
+    {% if(moduleId != null) %}
+        <h1> Votre avis : </h1>
+        {{ render(controller(
+        'ReviewBundle:ReviewDisplay:displayOwn',
+        { 'moduleId': moduleId  }
+        )) }}
+    {% endif %}
 {% endblock %}

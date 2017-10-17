@@ -11,14 +11,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Teacher extends User
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+//    /**
+//     * @var int
+//     *
+//     * @ORM\Column(name="id", type="integer")
+//     * @ORM\Id
+//     * @ORM\GeneratedValue(strategy="AUTO")
+//     */
+//    private $id;
 
     /**
      * @ORM\OneToMany(targetEntity="Module", mappedBy="teacher")
@@ -26,18 +26,27 @@ class Teacher extends User
     private $modules;
 
     /**
-     * Get id
-     *
-     * @return int
+     * @return mixed
      */
-    public function getId()
+    public function getModules()
     {
-        return $this->id;
+        return $this->modules;
     }
 
-    public function __construct($firstName, $lastName)
+//    /**
+//     * Get id
+//     *
+//     * @return int
+//     */
+//    public function getId()
+//    {
+//        return $this->id;
+//    }
+
+
+    public function __construct($firstName = null , $lastName = null, $email = null ,$division = null )
     {
-        parent::__construct($firstName, $lastName);
+        parent::__construct($firstName, $lastName, $email);
         $this->addRole('ROLE_TEACHER');
     }
 

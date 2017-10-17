@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="col-md-6 margin-centered">
+        <h1>CREATION D'UN {% block type %}{% endblock %}</h1>
+
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {#<input type="submit" value="Create" />#}
+        {{ form_end(form) }}
+
+        <div>
+                <a class="btn btn-default btn-block btn-lg btn-grey" href="{{ path('admin_students_index') }}">BACK TO THE LIST</a>
+        </div>
+    </div>
+{% endblock %}

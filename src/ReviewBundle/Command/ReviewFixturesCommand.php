@@ -13,6 +13,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use UserBundle\Form\StudentType;
 
 class ReviewFixturesCommand extends ContainerAwareCommand
 {
@@ -51,20 +52,13 @@ class ReviewFixturesCommand extends ContainerAwareCommand
         }
 
         $teachers = [
-            new Teacher('COMUNI','KANT'),
-            new Teacher('SAM','LECASSE'),
-            new Teacher('XAVIER','KAFERGAFFE'),
-            new Teacher('JAY','DESSSERTIFS'),
-            new Teacher('MATHIAS','DECAFER')
+            new Teacher('COMUNI','KANT',' communi.kant@ynov.com'),
+            new Teacher('SAM','LECASSE','sam.lecasse@ynov.com'),
+            new Teacher('XAVIER','KAFERGAFFE','xavier.kafergaffe@ynov.com'),
+            new Teacher('JAY','DESSSERTIFS','jay.dessertifs@ynov.com'),
+            new Teacher('MATHIAS','DECAFER','mathias.decafer@ynov.com')
 
         ];
-        foreach ($teachers as $teacher)
-        {
-            $encoder = $this->getContainer()->get('security.password_encoder');
-            $password = $encoder->encodePassword($teacher,'p@ssw0rd');
-            $teacher->setPassword($password);
-            $em->persist($teacher);
-        }
 
         $modules = [
             new Module($subjects[0],$teachers[0],$divisions[0]),
@@ -79,19 +73,33 @@ class ReviewFixturesCommand extends ContainerAwareCommand
         }
 
         $students = [
-            new Student('HACEN','SEHEF',$divisions[0]),
-            new Student('LENI','BARS',$divisions[0]),
-            new Student('HOMER','DALORE',$divisions[0]),
-            new Student('PAUL','UTION',$divisions[1]),
-            new Student('HARRY','COT',$divisions[1]),
-            new Student('SARAH','FRECHIE',$divisions[1]),
+            new Student('HACEN','SEHEF','hacen.sehef@ynov.com',$divisions[0]),
+            new Student('LENI','BARS','leni.bars@ynov.com',$divisions[0]),
+            new Student('HOMER','DALORE','homer.dalore@ynov.com',$divisions[0]),
+            new Student('PAUL','UTION','paul.ution@ynov.com',$divisions[1]),
+            new Student('HARRY','COT','harry.cot@ynov.com',$divisions[1]),
+            new Student('SARAH','FRECHIE','sarah.frechie@ynov.com',$divisions[1]),
         ];
-        foreach ($students as $student)
+
+        $admins = [
+            new Student('Jules','LAURENT','jules.laurent@ynov.com',$divisions[1]),
+            new Student('Alexandra','RAMADOUR','alexandra.ramadour@ynov.com',$divisions[1]),
+        ];
+
+        foreach ($admins as $admin)
         {
-            $encoder = $this->getContainer()->get('security.password_encoder');
-            $password = $encoder->encodePassword($student,'p@ssw0rd');
-            $student->setPassword($password);
-            $em->persist($student);
+            $admin->addRole('ROLE_ADMIN');
+        }
+
+        $usersGroups = [$admins,$students,$teachers];
+        foreach ($usersGroups as $usersGroup)
+        {
+            foreach ($usersGroup as $user) {
+                $encoder = $this->getContainer()->get('security.password_encoder');
+                $password = $encoder->encodePassword($user, 'p@ssw0rd');
+                $user->setPassword($password);
+                $em->persist($user);
+            }
         }
 
         $em->persist( Review::createFull(5, 'tip_top', 0, 'pas tip top',$modules[0],$students[0]));

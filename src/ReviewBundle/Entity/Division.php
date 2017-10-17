@@ -120,6 +120,15 @@ class Division
         $this->modules = $modules;
     }
 
+    public function getFullName()
+    {
+        return $this->school.' '.$this->grade;
+    }
+
+    public function __toString()
+    {
+        return $this->getFullName();
+    }
 
 
     public function __construct(string $school,string $grade)
