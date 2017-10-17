@@ -5,3 +5,6 @@ services:
 
     user.data.fetcher:
       class : ReviewBundle\Services\DataFetcherService
+
+    import.csv2array:
+      class : ReviewBundle\Services\Csv2ArrayService

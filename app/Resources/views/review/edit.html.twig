@@ -2,16 +2,17 @@
 
 {% block body %}
     <h1>MODERER UN FEEDBACK</h1>
+    <div class="col-md-6 margin-centered">
+       {{ form(edit_form) }}
 
-   {{ form(edit_form) }}
 
-
-    <div class="row justify-content-around">
-        <div class="col-md-6">
-            <a class="btn btn-default btn-lg btn-block btn-grey" href="{{ path('admin_review_index') }}">Back to the list</a>
-        </div>
-        <div class="col-md-6">
-            {{ form(delete_form) }}
+        <div class="row justify-content-around">
+            <div class="col-md-6">
+                <a class="btn btn-default btn-lg btn-block btn-grey" href="{{ path('admin_review_index') }}">Back to the list</a>
+            </div>
+            <div class="col-md-6">
+                {{ form(delete_form) }}
+            </div>
         </div>
     </div>
 {% endblock %}

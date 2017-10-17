@@ -3,6 +3,7 @@
 namespace ReviewBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ReviewBundle\Entity\Review;
 
 /**
  * Module
@@ -146,6 +147,44 @@ class Module
     {
         return $this->subject.'+'.$this->teacher.'['.$this->division.']';
     }
+
+    public function getAverageClassRate()
+    {
+        $reviews = $this->getReviews();
+        if(count($reviews) <= 0)
+            return 0;
+        $sum = 0;
+        foreach ($reviews as $review)
+        {
+            $sum += $review->getClassRate();
+        }
+        return  $sum / count($reviews);
+    }
+
+    public function getAverageClassRateStars()
+    {
+        return Review::rateToStars($this->getAverageClassRate());
+    }
+
+    public function getAverageTeacherRate()
+    {
+        $reviews = $this->getReviews();
+        if(count($reviews) <= 0)
+            return 0;
+        $sum = 0;
+        foreach ($reviews as $review)
+        {
+            $sum += $review->getTeacherRate();
+        }
+
+        return  $sum / count($reviews);
+    }
+
+    public function getAverageTeacherRateStars()
+    {
+        return Review::rateToStars($this->getAverageTeacherRate());
+    }
+
 
 }
 
