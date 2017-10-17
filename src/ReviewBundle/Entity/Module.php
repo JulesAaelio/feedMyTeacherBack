@@ -4,6 +4,7 @@ namespace ReviewBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ReviewBundle\Entity\Review;
+use Symfony\Component\Validator\Constraints\RangeValidator;
 
 /**
  * Module
@@ -136,11 +137,20 @@ class Module
         return $this->reviews;
     }
 
-    public function __construct($subject,$teacher,$division)
+//    public function __construct($subject,$teacher,$division)
+//    {
+//        $this->subject = $subject;
+//        $this->teacher = $teacher;
+//        $this->division = $division;
+//    }
+
+    public static function createFull($subject,$teacher,$division)
     {
-        $this->subject = $subject;
-        $this->teacher = $teacher;
-        $this->division = $division;
+        $module = new Module();
+        $module->subject = $subject;
+        $module->teacher = $teacher;
+        $module->division = $division;
+        return $module;
     }
 
     public function __toString()

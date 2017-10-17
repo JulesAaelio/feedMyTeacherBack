@@ -78,7 +78,7 @@ class ReviewFixturesCommand extends ContainerAwareCommand
                 $teacher = $em->getReference('ReviewBundle:Teacher', $row['teacher']);
                 $division = $em->getReference('ReviewBundle:Division', $row['division']);
 
-                $module = new Module($subject, $teacher, $division);
+                $module = Module::createFull($subject, $teacher, $division);
 
                 $em->persist($module);
                 $progress->advance();
@@ -94,6 +94,10 @@ class ReviewFixturesCommand extends ContainerAwareCommand
                 $division = $em->getReference('ReviewBundle:Division', $row['group']);
                 $student = new Student($row['firstName'], $row['lastName'], $row['email'], $division);
                 $this->setDefaultPassword($student);
+                if($student->getEmail() == 'jules.laurent@ynov.com' || $student->getEmail() ==  'alexandra.ramadour@ynov.com')
+                {
+                    $student->addRole('ROLE_ADMIN');
+                }
                 $em->persist($student);
                 $progress->advance();
             }

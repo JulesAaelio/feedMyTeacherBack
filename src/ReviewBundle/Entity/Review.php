@@ -208,7 +208,6 @@ class Review
     public static function rateToStars($rate)
     {
         $rate = round($rate,0);
-        var_dump($rate);
         $stars = '';
         for($i = 0;$i < 5;$i++)
         {
