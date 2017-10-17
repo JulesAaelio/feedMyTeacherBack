@@ -1,4 +1,4 @@
-FeedMyTeacherBack
+FeedMyTeacherBack :briefcase: :mortar_board:
 =================
 A symfony based school project. 
 
