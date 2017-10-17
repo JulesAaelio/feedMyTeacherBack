@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>LISTE DES FEEDBACKS</h1>
+    <div>
+        <a class="btn btn-default btn-block btn-lg btn-pink"  href="{{ path('admin_review_new') }}">CREER UN FEEDBACK</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Teacherrate</th>
+                <th>Teacherreview</th>
+                <th>Classrate</th>
+                <th>Classreview</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody class="table-striped">
+        {% for review in reviews %}
+            <tr>
+                <td><a href="{{ path('admin_review_show', { 'id': review.id }) }}">{{ review.id }}</a></td>
+                <td>{{ review.teacherRate }}</td>
+                <td>{{ review.teacherReview }}</td>
+                <td>{{ review.classRate }}</td>
+                <td>{{ review.classReview }}</td>
+                <td>
+                    <a class="btn btn-default btn-green" href="{{ path('admin_review_show', { 'id': review.id }) }}">SHOW</a>
+                </td>
+                <td>
+                    <a class="btn btn-default btn-pink" href="{{ path('admin_review_edit', { 'id': review.id }) }}">EDIT</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

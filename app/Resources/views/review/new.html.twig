@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>CREER UN FEEDBACK</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {#<input type="submit" value="Create" />#}
+    {{ form_end(form) }}
+
+    <div>
+        <a class="btn btn-default btn-block btn-lg btn-grey" href="{{ path('admin_review_index') }}">BACK TO THE LIST</a>
+    </div>
+{% endblock %}
