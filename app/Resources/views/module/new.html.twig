@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>AJOUTER UN MODULE</h1>
+
+    {{ form(form) }}
+
+    <div>
+        <a class="btn btn-default btn-block btn-lg btn-grey" href="{{ path('admin_modules_index') }}">BACK TO THE LIST</a>
+    </div>
+{% endblock %}

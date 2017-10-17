@@ -45,9 +45,9 @@ Password : p@ssw0rd
 - [X] Register form 
 - [X] Login form
 - [X] CRUD 
-    - [] Subjects crud 
-- [] Class president interface 
-- [] Avatars implementation
+    - [ ] Subjects crud 
+- [ ] Class president interface 
+- [ ] Avatars implementation
 
 :clap: :clap:
 

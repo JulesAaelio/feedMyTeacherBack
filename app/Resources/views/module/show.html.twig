@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>MODULE</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ module.id }}</td>
+            </tr>
+            <tr>
+                <th>Matière</th>
+                <td>{{ module.subject }}</td>
+            </tr>
+            <tr>
+                <th>Professeur</th>
+                <td>{{ module.teacher }}</td>
+            </tr>
+            <tr>
+                <th>Classe</th>
+                <td>{{ module.division }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="col-md-12">
+            <a class="btn btn-default btn-block btn-lg btn-pink"
+               href="{{ path('admin_modules_edit', { 'id': module.id }) }}">Edit</a>
+        </div>
+    </div>
+    <div class="row justify-content-around">
+        <div class="col-md-6">
+            <a class="btn btn-default btn-block btn-lg btn-grey" href="{{ path('admin_modules_index') }}">Back to the
+                list</a>
+        </div>
+        <div class="col-md-6">
+            {{ form(delete_form) }}
+        </div>
+    </div>
+{% endblock %}

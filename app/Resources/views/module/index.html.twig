@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>LISTE DES MODULES</h1>
+    <div>
+        <a class="btn btn-default btn-block btn-lg btn-pink"  href="{{ path('admin_modules_new') }}">CREER UN MODULE</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>CLASSE</th>
+                <th>PROF</th>
+                <th>MATIERE</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody class="table-striped">
+        {% for module in modules %}
+            <tr>
+                <td><a href="{{ path('admin_modules_show', { 'id': module.id }) }}">{{ module.id }}</a></td>
+                <td>{{ module.division }}</td>
+                <td>{{ module.teacher }}</td>
+                <td>{{ module.subject }}</td>
+                <td>
+                    <a class="btn btn-default btn-green" href="{{ path('admin_modules_show', { 'id': module.id }) }}">SHOW</a>
+                </td>
+                <td>
+                    <a class="btn btn-default btn-pink" href="{{ path('admin_modules_edit', { 'id': module.id }) }}">EDIT</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
