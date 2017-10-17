@@ -1,12 +1,4 @@
-<ul class="review-list">
-    {% for module in modules %}
-        <li class="review">
-            <a href="{{ url('student_dashboard', {'moduleId': module.id })}}">
-                <div class="font-weight-bold"> {{ module.subject }}</div>
-                <div> {{ module.teacher }} </div>
-            </a>
-        </li>
-    {% else %}
-        <li>No feedback yet ! Be the first to feedback ! (Nah you can't because students did'nt worked enough !)</li>
-    {% endfor %}
-</ul>
+{% extends 'ReviewBundle:Dashboard:moduleList.html.twig' %}
+{% block detailRoute %}{{ url('student_dashboard', {'moduleId': module.id })}}{% endblock %}
+{% block headerLine %} {{ module.subject }} {% endblock %}
+{% block subHeaderLine %} {{ module.teacher }} {% endblock %}

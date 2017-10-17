@@ -18,15 +18,22 @@ use ReviewBundle\Entity\User;
 class ModuleListController extends Controller
 {
 
-    /**
-     * @Route("/module-list/",name="module_list")
-     */
     public function listAction()
     {
         $connectedStudent = $this->getUser();
         $modules = $connectedStudent->getDivision()->getModules();
 
         return $this->render('ReviewBundle:StudentDashboard:moduleList.html.twig', [
+            'modules' => $modules,
+        ]);
+    }
+
+    public function listForTeacherAction()
+    {
+        $connectedTeacher = $this->getUser();
+        $modules = $connectedTeacher->getModules();
+
+        return $this->render('ReviewBundle:TeacherDashboard:moduleList.html.twig', [
             'modules' => $modules,
         ]);
     }

@@ -1,3 +1,7 @@
+review_review:
+    resource: "@ReviewBundle/Controller/ReviewController.php"
+    type:     annotation
+
 review_user:
     resource: "@ReviewBundle/Controller/UserController.php"
     type:     annotation

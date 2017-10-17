@@ -1,0 +1,12 @@
+<ul class="review-list">
+    {% for module in modules %}
+        <li class="module">
+            <a href="{% block detailRoute %} {% endblock %}">
+                <div class="font-weight-bold"> {% block headerLine %}{% endblock %} </div>
+                <div> {% block subHeaderLine %} {% endblock %}  </div>
+            </a>
+        </li>
+    {% else %}
+        <li>No feedback yet ! Be the first to feedback ! (Nah you can't because students did'nt worked enough !)</li>
+    {% endfor %}
+</ul>

@@ -142,5 +142,10 @@ class Module
         $this->division = $division;
     }
 
+    public function __toString()
+    {
+        return $this->subject.'+'.$this->teacher.'['.$this->division.']';
+    }
+
 }
 

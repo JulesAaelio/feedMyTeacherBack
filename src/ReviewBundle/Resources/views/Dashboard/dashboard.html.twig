@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-3">
+            {% block modulesList %}
+            {% endblock %}
+        </div>
+        <div class="col-md-3 module-detail">
+            {% block moduleDetail %}
+            {% endblock %}
+        </div>
+        <div class="col-md-6 review-pane">
+            {% block review %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

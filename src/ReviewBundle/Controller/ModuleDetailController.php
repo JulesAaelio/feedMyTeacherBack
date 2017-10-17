@@ -19,14 +19,27 @@ class ModuleDetailController extends Controller
 {
     public function detailAction($moduleId = null)
     {
+        $module = $this->getModule($moduleId);
+        return $this->render('ReviewBundle:StudentDashboard:moduleDetail.html.twig', [
+            'module' => $module,
+        ]);
+    }
+
+    public function detailForTeacherAction($moduleId = null)
+    {
+        $module = $this->getModule($moduleId);
+        return $this->render('ReviewBundle:TeacherDashboard:moduleDetail.html.twig', [
+            'module' => $module,
+        ]);
+    }
+
+    private function getModule($moduleId)
+    {
         $module = null;
         if($moduleId) {
             $moduleRepository = $this->getDoctrine()->getRepository(Module::class);
             $module = $moduleRepository->find($moduleId);
         }
-
-        return $this->render('ReviewBundle:StudentDashboard:moduleDetail.html.twig', [
-            'module' => $module,
-        ]);
+        return $module;
     }
 }

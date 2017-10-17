@@ -26,14 +26,13 @@ h1
     text-align: center;
 }
 
-.review
-{
+.module{
     box-shadow: orange 2px 2px;
     padding: 20px 20px;
     list-style: none;
     margin-bottom: 5px;
 }
-.review  div
+.module div
 {
     min-width: 400px;
     display: inline-block;
@@ -93,4 +92,11 @@ h1
 .margin-centered
 {
     margin: auto;
+}
+
+.review{
+    box-shadow: pink 2px 2px;
+    padding: 20px 20px;
+    list-style: none;
+    margin-bottom: 5px;
 }

@@ -75,5 +75,9 @@ class Student extends User
         $this->addRole('ROLE_STUDENT');
     }
 
+    public function __toString()
+    {
+        return parent::__toString().'['.$this->division.']';
+    }
 }
 

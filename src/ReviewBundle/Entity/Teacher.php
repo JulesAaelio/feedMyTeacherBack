@@ -25,6 +25,14 @@ class Teacher extends User
      */
     private $modules;
 
+    /**
+     * @return mixed
+     */
+    public function getModules()
+    {
+        return $this->modules;
+    }
+
 //    /**
 //     * Get id
 //     *
@@ -34,6 +42,7 @@ class Teacher extends User
 //    {
 //        return $this->id;
 //    }
+
 
     public function __construct($firstName = null , $lastName = null, $email = null ,$division = null )
     {
