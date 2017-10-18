@@ -100,3 +100,7 @@ h1
     list-style: none;
     margin-bottom: 5px;
 }
+.images{
+    height: 50px;
+    width: 50px;
+}
