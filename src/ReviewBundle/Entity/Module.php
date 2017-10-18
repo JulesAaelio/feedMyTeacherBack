@@ -195,6 +195,18 @@ class Module
         return Review::rateToStars($this->getAverageTeacherRate());
     }
 
+    public function getFeedbackProgress()
+    {
+        $reviews = $this->getReviews();
+        return count($reviews);
+    }
+
+    public function getFeedbackNumberGoal()
+    {
+        $students =  $this->getDivision()->getStudents();
+        return count($students);
+    }
+
 
 }
 

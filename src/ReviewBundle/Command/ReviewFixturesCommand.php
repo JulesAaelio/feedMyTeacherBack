@@ -9,6 +9,7 @@ use ReviewBundle\Entity\Student;
 use ReviewBundle\Entity\Subject;
 use ReviewBundle\Entity\Teacher;
 use ReviewBundle\Entity\User;
+use ReviewBundle\ReviewBundle;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputArgument;
@@ -104,6 +105,22 @@ class ReviewFixturesCommand extends ContainerAwareCommand
                     $student->addRole('ROLE_REPRESENTATIVE');
                 }
                 $em->persist($student);
+                $progress->advance();
+            }
+            $this->finishStep($progress,$output);
+        }
+
+        $rows = $converter->convert(__DIR__ . '/../Resources/Imports/reviewse.csv');
+        if ($rows != false) {
+            $progress = new ProgressBar($output,count($rows));
+            $output->writeln('<info>Chargement des commentaires</info>');
+            foreach ($rows as $row) {
+                $sender = $em->getReference('ReviewBundle:Student', $row['sender']);
+                $module = $em->getReference('ReviewBundle:Module', $row['module']);
+
+                $review = Review::createFull($row['teacherRate'],$row['teacherReview'],$row['classRate'],$row['classReview'],$module,$sender);
+
+                $em->persist($review);
                 $progress->advance();
             }
             $this->finishStep($progress,$output);

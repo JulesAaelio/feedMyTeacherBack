@@ -104,3 +104,14 @@ h1
     height: 50px;
     width: 50px;
 }
+
+.module-list,.review-pane   ,.module-detail
+{
+    height:80vh;
+    overflow-x: hidden;
+}
+
+.module-list,.review-pane
+{
+    overflow-y: scroll;
+}
