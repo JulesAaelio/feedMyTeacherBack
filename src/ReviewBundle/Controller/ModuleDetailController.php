@@ -20,6 +20,10 @@ class ModuleDetailController extends Controller
     public function detailAction($moduleId = null)
     {
         $module = $this->getModule($moduleId);
+        if($module && $module && $module->getDivision() != $this->getUser()->getDivision())
+        {
+            throw $this->createAccessDeniedException();
+        }
         return $this->render('ReviewBundle:StudentDashboard:moduleDetail.html.twig', [
             'module' => $module,
         ]);
@@ -28,6 +32,10 @@ class ModuleDetailController extends Controller
     public function detailForTeacherAction($moduleId = null)
     {
         $module = $this->getModule($moduleId);
+        if($module && $module->getTeacher() != $this->getUser())
+        {
+            throw $this->createAccessDeniedException();
+        }
         return $this->render('ReviewBundle:TeacherDashboard:moduleDetail.html.twig', [
             'module' => $module,
         ]);
@@ -36,9 +44,13 @@ class ModuleDetailController extends Controller
     private function getModule($moduleId)
     {
         $module = null;
-        if($moduleId) {
+        if($moduleId != null) {
             $moduleRepository = $this->getDoctrine()->getRepository(Module::class);
             $module = $moduleRepository->find($moduleId);
+            if(!$module)
+            {
+                throw $this->createNotFoundException();
+            }
         }
         return $module;
     }

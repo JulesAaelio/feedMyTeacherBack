@@ -9,12 +9,14 @@ use ReviewBundle\Entity\Student;
 use ReviewBundle\Entity\Subject;
 use ReviewBundle\Entity\Teacher;
 use ReviewBundle\Entity\User;
+use ReviewBundle\ReviewBundle;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use UserBundle\Form\StudentType;
 
@@ -30,8 +32,8 @@ class ReviewFixturesCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('<info>Chargement du jeu d\'essai.</info>');
-
+        $io = new SymfonyStyle($input,$output);
+        $io->title('Chargement du jeu d\'essai');
         $converter = $this->getContainer()->get('import.csv2array');
         $em = $this->getContainer()->get('doctrine.orm.entity_manager');
 
@@ -94,15 +96,37 @@ class ReviewFixturesCommand extends ContainerAwareCommand
                 $division = $em->getReference('ReviewBundle:Division', $row['group']);
                 $student = new Student($row['firstName'], $row['lastName'], $row['email'], $division);
                 $this->setDefaultPassword($student);
-                if($student->getEmail() == 'jules.laurent@ynov.com' || $student->getEmail() ==  'alexandra.ramadour@ynov.com')
+                if($student->getEmail() ==  'alexandra.ramadour@ynov.com')
                 {
                     $student->addRole('ROLE_ADMIN');
+                }
+                if($student->getEmail() == 'jules.laurent@ynov.com')
+                {
+                    $student->addRole('ROLE_REPRESENTATIVE');
                 }
                 $em->persist($student);
                 $progress->advance();
             }
             $this->finishStep($progress,$output);
         }
+
+        $rows = $converter->convert(__DIR__ . '/../Resources/Imports/reviewse.csv');
+        if ($rows != false) {
+            $progress = new ProgressBar($output,count($rows));
+            $output->writeln('<info>Chargement des commentaires</info>');
+            foreach ($rows as $row) {
+                $sender = $em->getReference('ReviewBundle:Student', $row['sender']);
+                $module = $em->getReference('ReviewBundle:Module', $row['module']);
+
+                $review = Review::createFull($row['teacherRate'],$row['teacherReview'],$row['classRate'],$row['classReview'],$module,$sender);
+
+                $em->persist($review);
+                $progress->advance();
+            }
+            $this->finishStep($progress,$output);
+        }
+
+        $io->success('CHARGEMENT DU JEU D\'ESSAI TERMINE !');
 
     }
 

@@ -1,3 +1,7 @@
+{% if not anonymous %}
+    <h3>Commentaire de {{ review.sender }}</h3>
+{% endif %}
+
 <h4> L'intervenant :</h4>
 <div>
     <span class="font-italic">Note : </span>

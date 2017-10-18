@@ -1,0 +1,2 @@
+{% extends 'ReviewBundle:StudentDashboard:moduleList.html.twig' %}
+{% block detailRoute %}{{ url('representative_dashboard', {'moduleId': module.id })}}{% endblock %}

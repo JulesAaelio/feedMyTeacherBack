@@ -35,6 +35,7 @@ class ReviewDisplayController extends Controller
         {
             return $this->render('ReviewBundle:Dashboard:review.html.twig', [
                 'review' => $review,
+                'anonymous' => true,
             ]);
         }else {// CREATE AND HANDLE FORM IF REVIEW DO NOT EXIST
             $form = $this->createForm(StudentReviewType::class, new Review());
@@ -49,7 +50,10 @@ class ReviewDisplayController extends Controller
                 $em->persist($newReview);
                 $em->flush();
 
-                return $this->redirectToRoute('student_dashboard', array('moduleId' => $moduleId));
+                return $this->render('ReviewBundle:Dashboard:review.html.twig', [
+                'review' => $newReview,
+                'anonymous' => true,
+            ]);
             }
             return $this->render('ReviewBundle:StudentDashboard:reviewForm.html.twig', [
                 'form' => $form->createView(),
@@ -57,8 +61,13 @@ class ReviewDisplayController extends Controller
         }
     }
 
+    public function createAction()
+    {
 
-    public function displayAllAction(Request $request,$moduleId = null)
+    }
+
+
+    public function displayAllAction(Request $request,$moduleId = null,$anonymous = true)
     {
         // GET USER AND PARENT REQUEST
         $connectedUser = $this->getUser();
@@ -70,8 +79,9 @@ class ReviewDisplayController extends Controller
         $reviewRepository = $this->getDoctrine()->getRepository(Review::class);
         $reviews = $reviewRepository->findBy(array('module'=>$module));
 
-        return $this->render('ReviewBundle:TeacherDashboard:reviews.html.twig', [
-            'reviews' => $reviews
+        return $this->render('ReviewBundle:Dashboard:reviews.html.twig', [
+            'reviews' => $reviews,
+            'anonymous' => $anonymous,
         ]);
     }
 }

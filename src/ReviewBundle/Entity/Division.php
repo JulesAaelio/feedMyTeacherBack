@@ -130,6 +130,15 @@ class Division
         return $this->getFullName();
     }
 
+    /**
+     * @return mixed
+     */
+    public function getStudents()
+    {
+        return $this->students;
+    }
+
+
 
     public function __construct(string $school,string $grade)
     {
