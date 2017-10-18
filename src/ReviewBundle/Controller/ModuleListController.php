@@ -20,8 +20,7 @@ class ModuleListController extends Controller
 
     public function listAction()
     {
-        $connectedStudent = $this->getUser();
-        $modules = $connectedStudent->getDivision()->getModules();
+        $modules = $this->getModules();
 
         return $this->render('ReviewBundle:StudentDashboard:moduleList.html.twig', [
             'modules' => $modules,
@@ -30,11 +29,33 @@ class ModuleListController extends Controller
 
     public function listForTeacherAction()
     {
-        $connectedTeacher = $this->getUser();
-        $modules = $connectedTeacher->getModules();
+       $modules = $this->getModules();
 
         return $this->render('ReviewBundle:TeacherDashboard:moduleList.html.twig', [
             'modules' => $modules,
         ]);
+    }
+
+    public function listForRepresentativeAction()
+    {
+        $modules = $this->getModules();
+
+        return $this->render('ReviewBundle:RepresentativeDashboard:moduleList.html.twig', [
+            'modules' => $modules,
+        ]);
+
+    }
+
+    private function getModules()
+    {
+        $connectedUser = $this->getUser();
+        if(in_array('ROLE_TEACHER',$connectedUser->getRoles()))
+        {
+            $modules = $connectedUser->getModules();
+        }else
+        {
+            $modules =  $connectedUser->getDivision()->getModules();
+        }
+        return $modules;
     }
 }

@@ -30,4 +30,14 @@ class DashboardController extends Controller
             'moduleId'=>$moduleId
         ]);
     }
+
+    /**
+     * @Route("/representative-report/{moduleId}", name="representative_dashboard")
+     */
+    public function showRepAction($moduleId = null)
+    {
+        return $this->render('ReviewBundle:RepresentativeDashboard:dashboard.html.twig',[
+            'moduleId'=>$moduleId
+        ]);
+    }
 }

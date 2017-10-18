@@ -1,0 +1,21 @@
+{% extends 'ReviewBundle:Dashboard:dashboard.html.twig' %}
+{% block modulesList %}
+    {{ render(controller('ReviewBundle:ModuleList:listForRepresentative')) }}
+{% endblock %}
+{% block moduleDetail %}
+    {{ render(controller(
+    'ReviewBundle:ModuleDetail:detail',
+    { 'moduleId': moduleId  }
+    )) }}
+{% endblock %}
+{% block review %}
+    {% if moduleId != null %}
+        {{ render(controller(
+        'ReviewBundle:ReviewDisplay:displayAll',
+        {
+            'moduleId': moduleId,
+            'anonymous' : false
+        }
+        )) }}
+    {% endif %}
+{% endblock %}
