@@ -42,18 +42,18 @@ class SecurityController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $newStudent = $form->getData();
+            $student = $form->getData();
 
             //ENCODE PASSWORD
             $encoder = $this->get('security.password_encoder');
-            $student->setPassword($encoder->encodePassword($newStudent,$newStudent->getPassword()));
+            $student->setPassword($encoder->encodePassword($student,$student->getPassword()));
 
             //BE SURE THAT THE LAST NAME IS CAPS
             $student->setLastName(strtoupper($student->getLastName()));
 
             //SAVE NEW ENTITY
             $em = $this->getDoctrine()->getManager();
-            $em->persist($newStudent);
+            $em->persist($student);
             $em->flush();
 
             $message = (new \Swift_Message("Let s feed teachers back ! "))

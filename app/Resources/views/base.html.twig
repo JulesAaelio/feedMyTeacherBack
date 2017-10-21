@@ -7,19 +7,40 @@
             <link rel="stylesheet" href="{{  asset('css/bootstrap.min.css') }}">
             <link rel="stylesheet" href="{{  asset('css/mdb.min.css') }}">
             <link rel="stylesheet" href="{{  asset('css/main.css') }}">
+            <link rel="stylesheet" href="{{  asset('css/font-awesome.min.css') }}">
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% include 'nav.html.twig' %}
         <div class="container">
-            {% block body %}{% endblock %}
+
+            {% block body %}
+
+
+            {% endblock %}
         </div>
         {% block javascripts %}
             <script type="text/javascript" src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/bootstrap-notify.min.js') }}"></script>
+            <script>debugger;</script>
+                {% block flashes %}
+                    {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                            <script>
+                                debugger;
+                                var parameters = {{ message|raw }};
+                                console.log(parameters);
+                                $.notify(parameters,{
+                                    type : '{{ label }}'
+                                });
+                            </script>
+                        {% endfor %}
+                    {% endfor %}
+                {% endblock %}
 
         {% endblock %}
     </body>

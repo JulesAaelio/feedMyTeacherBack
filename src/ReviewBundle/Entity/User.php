@@ -3,6 +3,7 @@
 namespace ReviewBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -15,7 +16,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  * @ORM\DiscriminatorColumn(name="discr", type="string")
  * @ORM\DiscriminatorMap({"student" = "Student","teacher" = "Teacher"})
  */
-abstract class User implements UserInterface, \Serializable
+abstract class User implements AdvancedUserInterface, \Serializable
 {
     /**
      * @var int
@@ -163,7 +164,7 @@ abstract class User implements UserInterface, \Serializable
         $this->email = $email;
 //        $this->username = strtolower($firstName.'.'.$lastName);
 //        $this->email = strtolower($firstName.'.'.$lastName.'@ynov.com');
-        $this->isActive = true;
+        $this->isActive = false;
         $this->roles = array('ROLE_USER');
     }
 
@@ -239,6 +240,25 @@ abstract class User implements UserInterface, \Serializable
         $this->isActive = $isActive;
     }
 
+    public function isAccountNonExpired()
+    {
+        return $this->isActive;
+    }
+
+    public function isAccountNonLocked()
+    {
+        return $this->isActive;
+    }
+
+    public function isCredentialsNonExpired()
+    {
+        return true;
+    }
+
+    public function isEnabled()
+    {
+       return $this->isActive;
+    }
 
 
 }
