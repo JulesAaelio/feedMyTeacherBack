@@ -16,7 +16,7 @@ class StudentReviewType extends AbstractType
             ->add('teacherReview', TextareaType::class, array('label' =>'Commentaire :'))
             ->add('classRate',IntegerType::class, array('label' => 'Note :'))
             ->add('classReview',TextareaType::class, array('label' =>'Commentaire :'))
-            ->add('save', SubmitType::class, array('label' => 'Publier'))
+            ->add('save', SubmitType::class, array('label' => 'PUBLIER'))
         ;
     }
 }

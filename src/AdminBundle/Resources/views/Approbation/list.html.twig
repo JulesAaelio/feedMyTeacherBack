@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>APPROBATIONS EN ATTENTE</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>NOM</th>
+            <th>PRENOM</th>
+            <th>CLASSE</th>
+            <th>EMAIL</th>
+            <th>ACCEPTER</th>
+            <th>REFUSER</th>
+            <th>MODIFIER</th>
+        </tr>
+        </thead>
+        <tbody class="table-striped">
+        {% for student in students %}
+            <tr>
+                <td>{{ student.lastName }}</td>
+                <td>{{ student.firstName }}</td>
+                <td>{{ student.division }}</td>
+                <td>{{ student.email }}</td>
+                <td>
+                    <a class="btn btn-default btn-green" href="{{ path('approbation_proceed', { 'studentId': student.id }) }}">
+                        <span class="fa fa-check"></span>
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-default btn-red" href="{{ path('approbation_proceed', { 'studentId': student.id, 'approve' : 'false' }) }}">
+                        <span class="fa fa-times"></span>
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-default btn-pink" href="{{ path('admin_students_edit', { 'id': student.id }) }}">
+                        <span class="fa fa-pencil"></span>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

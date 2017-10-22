@@ -1,19 +1,18 @@
 {% extends 'base.html.twig' %}
-
+{% block title %}FEEDBACK{% endblock %}
 {% block body %}
     <div class="col-md-6 margin-centered">
-        <h1>FEEDBACK</h1>
+        <h1>{{ block('title') }}</h1>
         {% include 'ReviewBundle:Dashboard:review.html.twig' %}
         <div class="row">
             <div class="col-md-12">
                 <a class="btn btn-default btn-block btn-lg btn-pink"
-                   href="{{ path('admin_review_edit', { 'id': review.id }) }}">Edit</a>
+                   href="{{ path('admin_review_edit', { 'id': review.id }) }}"><span class="fa fa-pencil"></span>MODIFIER</a>
             </div>
         </div>
         <div class="row justify-content-around">
             <div class="col-md-6">
-                <a class="btn btn-default btn-block btn-lg btn-grey" href="{{ path('admin_review_index') }}">Back to the
-                    list</a>
+                <a class="btn btn-default btn-block btn-lg btn-grey" href="{{ path('admin_review_index') }}">RETOURNER A LA LISTE</a>
             </div>
             <div class="col-md-6">
                 {{ form(delete_form) }}

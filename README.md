@@ -34,6 +34,18 @@ Username : alexandra.ramadour@ynov.com
 Password : p@ssw0rd
 ```
 
+``` 
+##Representative
+Username : jules.laurent@ynov.com
+Password : p@ssw0rd
+```
+
+``` 
+##Non-activated account
+Username : acti.vation@ynov.com
+Password : p@ssw0rd
+```
+
 ### Progress report : 
 - [X] List controller
 - [X] Review controller 
@@ -45,9 +57,11 @@ Password : p@ssw0rd
 - [X] Register form 
 - [X] Login form
 - [X] CRUD 
-    - [ ] Subjects crud 
-- [ ] Class president interface 
+- [X] Class president interface 
+- [X] Translation fixes
 - [ ] Avatars implementation
+- [ ] Reviews pre-moderation and class representative modération. 
+
 
 :clap: :clap:
 

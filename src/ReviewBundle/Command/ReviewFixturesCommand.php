@@ -65,6 +65,7 @@ class ReviewFixturesCommand extends ContainerAwareCommand
             $output->writeln('<info>Chargement des professeurs</info>');
             foreach ($rows as $row) {
                 $teacher = new Teacher($row['firstName'], $row['lastName'], $row['email']);
+                $teacher->setIsActive(true);
                 $this->setDefaultPassword($teacher);
                 $em->persist($teacher);
             }
@@ -103,6 +104,10 @@ class ReviewFixturesCommand extends ContainerAwareCommand
                 if($student->getEmail() == 'jules.laurent@ynov.com')
                 {
                     $student->addRole('ROLE_REPRESENTATIVE');
+                }
+                if($student->getEmail() != 'acti.vation@ynov.com')
+                {
+                    $student->setIsActive(true);
                 }
                 $em->persist($student);
                 $progress->advance();

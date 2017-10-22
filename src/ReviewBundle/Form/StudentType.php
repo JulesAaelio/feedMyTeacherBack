@@ -15,7 +15,8 @@ class StudentType extends UserType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder,$options);
-        $builder->add('division')
+        $builder
+            ->add('division',null,['label'=>'Classe'])
             ->add('save', SubmitType::class, array('label' => "VALIDER"));
     }
     

@@ -1,24 +1,24 @@
 {% extends 'base.html.twig' %}
-
+{% block title %}MODULE{% endblock %}
 {% block body %}
-    <h1>MODULE</h1>
+    <h1>{{ block('title') }}</h1>
 
     <table>
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>ID</th>
                 <td>{{ module.id }}</td>
             </tr>
             <tr>
-                <th>Matière</th>
+                <th>MATIERE : </th>
                 <td>{{ module.subject }}</td>
             </tr>
             <tr>
-                <th>Professeur</th>
+                <th>PROFESSEUR</th>
                 <td>{{ module.teacher }}</td>
             </tr>
             <tr>
-                <th>Classe</th>
+                <th>CLASSE</th>
                 <td>{{ module.division }}</td>
             </tr>
 
@@ -28,13 +28,12 @@
     <div class="row">
         <div class="col-md-12">
             <a class="btn btn-default btn-block btn-lg btn-pink"
-               href="{{ path('admin_modules_edit', { 'id': module.id }) }}">Edit</a>
+               href="{{ path('admin_modules_edit', { 'id': module.id }) }}">MODIFIER</a>
         </div>
     </div>
     <div class="row justify-content-around">
         <div class="col-md-6">
-            <a class="btn btn-default btn-block btn-lg btn-grey" href="{{ path('admin_modules_index') }}">Back to the
-                list</a>
+            <a class="btn btn-default btn-block btn-lg btn-grey" href="{{ path('admin_modules_index') }}">RETOUR A LA LISTE</a>
         </div>
         <div class="col-md-6">
             {{ form(delete_form) }}

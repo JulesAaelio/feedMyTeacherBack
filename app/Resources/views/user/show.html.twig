@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
-
+{% block title %}{% block type %}{% endblock %}{% endblock %}
 {% block body %}
     <div class="row">
     <div class="col-md-6 margin-centered">
-    <h1>{% block type %}{% endblock %}</h1>
+    <h1>{{ block('title') }}</h1>
 
     <table>
         <tbody>
@@ -28,14 +28,15 @@
         </tbody>
     </table>
     </div>
+    </div>
     <div class="row">
         <div class="col-md-12">
-        <a class="btn btn-default btn-block btn-lg btn-pink" href="{% block edit_path %}{% endblock %}">Edit</a>
+        <a class="btn btn-default btn-block btn-lg btn-pink" href="{% block edit_path %}{% endblock %}">MODIFIER</a>
         </div>
     </div>
     <div class="row justify-content-around">
         <div class="col-md-6">
-            <a class="btn btn-default btn-block btn-lg btn-grey" href="{% block index_path %}{% endblock %}">Back to the list</a>
+            <a class="btn btn-default btn-block btn-lg btn-grey" href="{% block index_path %}{% endblock %}">RETOURNER A LA LISTE</a>
         </div>
         <div class="col-md-6">
             {{ form(delete_form) }}

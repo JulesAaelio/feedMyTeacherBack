@@ -5,7 +5,9 @@ namespace ReviewBundle\Controller;
 use ReviewBundle\Entity\Teacher;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Teacher controller.
@@ -130,6 +132,7 @@ class TeacherController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('admin_teachers_delete', array('id' => $teacher->getId())))
             ->setMethod('DELETE')
+            ->add('save', SubmitType::class, array('label' => "SUPPRIMER",'attr'=>array('class'=>'btn-red btn-block btn-lg')))
             ->getForm()
         ;
     }

@@ -14,7 +14,13 @@ class ReviewType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('teacherRate')->add('teacherReview')->add('classRate')->add('classReview')->add('module')->add('sender')
+        $builder
+            ->add('teacherRate',null,['label'=>'Note[Professeur]'])
+            ->add('teacherReview',null,['label'=>'Commentaire[Professeur]'])
+            ->add('classRate',null,['label'=>'Note[Classe]'])
+            ->add('classReview',null,['label'=>'Commentaire[Classe]'])
+            ->add('module',null,['label'=>'Cours'])
+            ->add('sender',null,['label'=>'Auteur'])
             ->add('save', SubmitType::class, array('label' => "VALIDER"));
     }
     

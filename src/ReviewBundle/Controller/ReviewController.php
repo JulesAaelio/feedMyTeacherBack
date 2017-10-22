@@ -72,6 +72,7 @@ class ReviewController extends Controller
         return $this->render('review/show.html.twig', array(
             'review' => $review,
             'delete_form' => $deleteForm->createView(),
+            'anonymous'=>false
         ));
     }
 

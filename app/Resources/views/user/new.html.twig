@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
-
+{% block title %}CREATION D'UN {% block type %}{% endblock %}{% endblock %}
 {% block body %}
     <div class="col-md-6 margin-centered">
-        <h1>CREATION D'UN {% block type %}{% endblock %}</h1>
+        <h1>{{ block('title') }}</h1>
 
         {{ form_start(form) }}
             {{ form_widget(form) }}
@@ -10,7 +10,7 @@
         {{ form_end(form) }}
 
         <div>
-                <a class="btn btn-default btn-block btn-lg btn-grey" href="{{ path('admin_students_index') }}">BACK TO THE LIST</a>
+                <a class="btn btn-default btn-block btn-lg btn-grey" href="{{ path('admin_students_index') }}">RETOURNER A LA LISTE</a>
         </div>
     </div>
 {% endblock %}
