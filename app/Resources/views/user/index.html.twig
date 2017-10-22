@@ -1,20 +1,21 @@
 {% extends 'base.html.twig' %}
-
+{% block title %}LISTE DES ETUDIANTS{% endblock %}
 {% block body %}
-    <h1>LISTE DES ETUDIANTS</h1>
+    <h1>{{ block('title') }}</h1>
     <div>
-        <a class="btn btn-default btn-block btn-lg btn-pink" href="{{ path('admin_students_new') }}"> CREER UN {% block type %}{% endblock %} </a>
+        <a class="btn btn-default btn-block btn-lg btn-pink" href="{% block new_path %}{{ path('admin_students_new') }}{% endblock %}">
+            <span class="fa fa-plus"></span> CREER UN {% block type %}{% endblock %} </a>
     </div>
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>ID</th>
                 <th>NOM</th>
                 <th>PRENOM</th>
                 {% block more_headers %}
                  {% endblock %}
-                <th>SHOW</th>
-                <th>EDIT</th>
+                <th>AFFICHER</th>
+                <th>EDITER</th>
             </tr>
         </thead>
         <tbody class="table-striped">
@@ -26,10 +27,14 @@
                 {% block more_values %}
                 {% endblock %}
                 <td>
-                    <a class="btn btn-default btn-green" href="{% block show_path %}{{ path('admin_students_show', { 'id': user.id }) }}{% endblock %}">SHOW</a>
+                    <a class="btn btn-default btn-green" href="{% block show_path %}{{ path('admin_students_show', { 'id': user.id }) }}{% endblock %}">
+                        <span class="fa fa-info-circle"></span>
+                    </a>
                 </td>
                 <td>
-                    <a class="btn btn-default btn-pink" href="{% block edit_path %}{{ path('admin_students_edit', { 'id': user.id }) }}{% endblock %}">EDIT</a>
+                    <a class="btn btn-default btn-pink" href="{% block edit_path %}{{ path('admin_students_edit', { 'id': user.id }) }}{% endblock %}">
+                        <span class="fa fa-pencil"></span>
+                    </a>
                 </td>
             </tr>
         {% endfor %}

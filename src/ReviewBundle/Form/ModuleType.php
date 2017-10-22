@@ -14,8 +14,10 @@ class ModuleType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('subject')->add('teacher')->add('division')
-            ->add('save', SubmitType::class, array('label' => "VALIDER"));
+        $builder->add('subject',null,['label'=>'Matière'])
+        ->add('teacher',null,['label'=>'Professeur'])
+        ->add('division',null,['label'=>'Classe'])
+        ->add('save', SubmitType::class, array('label' => "VALIDER"));
     }
     
     /**

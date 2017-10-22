@@ -1,21 +1,24 @@
 {% extends 'base.html.twig' %}
-
+{% block title %}LISTE DES FEEDBACKS{% endblock %}
 {% block body %}
-    <h1>LISTE DES FEEDBACKS</h1>
+    <h1>{{ block('title') }}</h1>
+
     <div>
-        <a class="btn btn-default btn-block btn-lg btn-pink"  href="{{ path('admin_review_new') }}">CREER UN FEEDBACK</a>
+        <a class="btn btn-default btn-block btn-lg btn-pink"  href="{{ path('admin_review_new') }}">
+            <span class="fa fa-plus"></span> CREER UN FEEDBACK</a>
     </div>
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Teacherrate</th>
-                <th>Teacherreview</th>
-                <th>Classrate</th>
-                <th>Classreview</th>
-                <th>Module</th>
-                <th>Sender</th>
-                <th>Actions</th>
+                <th>NOTE [PROF]</th>
+                <th>COMMENTAIRE [PROF]</th>
+                <th>NOTE [CLASSE] </th>
+                <th>COMENTAIRE [CLASSE]</th>
+                <th>MODULE</th>
+                <th>AUTEUR</th>
+                <th>AFFICHER</th>
+                <th>MODIFIER</th>
             </tr>
         </thead>
         <tbody class="table-striped">
@@ -29,10 +32,14 @@
                 <td>{{ review.module }}</td>
                 <td>{{ review.sender }}</td>
                 <td>
-                    <a class="btn btn-default btn-green" href="{{ path('admin_review_show', { 'id': review.id }) }}">SHOW</a>
+                    <a class="btn btn-default btn-green" href="{{ path('admin_review_show', { 'id': review.id }) }}">
+                        <span class="fa fa-info-circle"></span>
+                    </a>
                 </td>
                 <td>
-                    <a class="btn btn-default btn-pink" href="{{ path('admin_review_edit', { 'id': review.id }) }}">EDIT</a>
+                    <a class="btn btn-default btn-pink" href="{{ path('admin_review_edit', { 'id': review.id }) }}">
+                        <span class="fa fa-pencil"></span>
+                    </a>
                 </td>
             </tr>
         {% endfor %}
