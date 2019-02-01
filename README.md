@@ -8,7 +8,7 @@ A symfony based school project.
 ### What's the point ? : 
 Provide a tool that allow student to give feedback on their classes / teachers. 
 
-###How to install :
+### How to install :
 ```
 git clone git@github.com:JulesAaelio/feedMyTeacherBack.git
 vagrant up
